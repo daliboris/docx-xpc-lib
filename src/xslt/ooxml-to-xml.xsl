@@ -89,7 +89,7 @@
   </xsl:for-each>
  </xsl:template>
  
- <xsl:template match="w:rFonts | w:pStyle | w:rStyle | w:sz | w:szCs" mode="direct-formatting" priority="2" />
+ <xsl:template match="w:rFonts | w:pStyle | w:rStyle | w:szCs" mode="direct-formatting" priority="2" /> <!-- | w:sz -->
  
  <xsl:template match="w:pPr/w:rPr/*" mode="direct-formatting" priority="3" />
  

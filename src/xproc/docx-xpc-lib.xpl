@@ -363,7 +363,7 @@
  </p:declare-step>
  
  <p:declare-step type="dxd:clean-runs" version="3.0" name="cleaning-runs">
-  <p:option name="debug" select="false()" />
+  <p:option name="debug" select="false()" as="xs:boolean" />
   <p:option name="temp-debug-path" select="'../temp/debug'" as="xs:string" />
   
   <p:output port="result" primary="true">
@@ -483,7 +483,7 @@
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-ooxml-content>
   <p:if test="$clean-markup">
-   <dxd:clean-runs />   
+   <dxd:clean-runs debug="{$debug}" temp-debug-path="{$temp-debug-path}" />   
   </p:if>
   <p:variable name="comments" select="/" />
   
@@ -491,7 +491,7 @@
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-ooxml-content>
   <p:if test="$clean-markup">
-   <dxd:clean-runs />   
+   <dxd:clean-runs debug="{$debug}" temp-debug-path="{$temp-debug-path}" />   
   </p:if>
   <p:variable name="footnotes" select="/" />
   
@@ -499,7 +499,7 @@
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-document>
   <p:if test="$clean-markup">
-   <dxd:clean-runs />   
+   <dxd:clean-runs debug="{$debug}" temp-debug-path="{$temp-debug-path}" />   
   </p:if>
   
   <p:if test="$debug">
