@@ -149,6 +149,33 @@
   <tab />
  </xsl:template>
  
+ <xsl:template match="w:tbl">
+  <xsl:variable name="n">
+   <xsl:number />
+  </xsl:variable>
+  <table n="{$n}">
+   <xsl:apply-templates />
+  </table>
+ </xsl:template>
+ 
+ <xsl:template match="w:tr">
+  <xsl:variable name="n">
+   <xsl:number />
+  </xsl:variable>
+  <row n="{$n}">
+   <xsl:apply-templates />
+  </row>
+ </xsl:template>
+ 
+ <xsl:template match="w:tc">
+  <xsl:variable name="n">
+   <xsl:number />
+  </xsl:variable>
+  <cell n="{$n}">
+   <xsl:apply-templates />
+  </cell>
+ </xsl:template>
+ 
  <xsl:function name="dcx:get-style-name">
   <xsl:param name="name" as="xs:string" />
   <xsl:value-of select="translate($name, ' ()', '-')"/>
