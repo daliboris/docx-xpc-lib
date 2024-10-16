@@ -5,6 +5,7 @@
  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
  xmlns:rel="http://schemas.openxmlformats.org/package/2006/relationships"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+ xmlns:xhtml="http://www.w3.org/1999/xhtml"
  version="3.0">
   
  <p:declare-step type="dxd:get-document" version="3.0" name="getting-document">
@@ -516,6 +517,103 @@
     'comments' : $comments
     }" />
   </p:xslt>
+  
+ </p:declare-step>
+ 
+ <p:declare-step type="dxd:process-revisions-docx" version="3.0" name="processing-revisions-docx" visibility="private">
+  
+  <p:documentation>
+   <xhtml:section>
+    <xhtml:h2></xhtml:h2>
+    <xhtml:p></xhtml:p>
+   </xhtml:section>
+  </p:documentation>
+  
+  
+  <p:input port="source" primary="true">
+   <p:documentation>Source document in DOCX format</p:documentation>
+  </p:input>
+  
+  <p:output port="result" primary="true">
+   <p:documentation>DOCX document with processed revisions, i.e. inserted, moved deleted and formatted spans or paragraphs. Revisions will be acctepted or rejected.</p:documentation>
+  </p:output>
+  
+  <p:option name="operation" as="xs:string" select="'accept'" values="('accept', 'reject')" required="false">
+   <p:documentation>How to process existing revisions: accept or reject them</p:documentation>
+  </p:option>
+  
+  <dxd:get-ooxml-content content="document">
+   <p:with-input port="source" pipe="source@processing-revisions-docx" />
+  </dxd:get-ooxml-content>
+  
+  <dxd:process-revisions-ooxml operation="{$operation}" />
+  <p:identity name="revisions" />
+  
+  <dxd:replace-document-only>
+   <p:with-input port="source" pipe="source@processing-revisions-docx" />
+   <p:with-input port="document" pipe="result@revisions" />
+  </dxd:replace-document-only>
+  
+ </p:declare-step>
+ 
+ <p:declare-step type="dxd:process-revisions-ooxml" version="3.0" name="processing-revisions-ooxml" visibility="private">
+  
+  <p:documentation>
+   <xhtml:section>
+    <xhtml:h2></xhtml:h2>
+    <xhtml:p></xhtml:p>
+   </xhtml:section>
+  </p:documentation>
+  
+  <p:input port="source" primary="true">
+   <p:documentation>Source document in OOXML format</p:documentation>
+  </p:input>
+  
+  <p:output port="result" primary="true">
+   <p:documentation>OOXML document with processed revisions, i.e. inserted, moved deleted and formatted spans or paragraphs. Revisions will be acctepted or rejected.</p:documentation>
+  </p:output>
+  
+  <p:option name="operation" as="xs:string" select="'accept'" values="('accept', 'reject')">
+   <p:documentation>How to process existing revisions: accept or reject them</p:documentation>
+  </p:option>
+  
+  <p:xslt>
+   <p:with-input port="stylesheet" href="../xslt/ooxml-revisions-process.xsl" />
+   <p:with-option name="parameters" select="map {'operation' : $operation }" />
+  </p:xslt>
+  
+ </p:declare-step>
+ 
+ <p:declare-step type="dxd:process-revisions" version="3.0" name="processing-revisions" visibility="public">
+  
+  <p:documentation>For inspiration see https://github.com/OpenXmlDev/Open-Xml-PowerTools/blob/vNext/OpenXmlPowerTools/RevisionProcessor.cs and https://github.com/ARLM-Keller/UOF-EF-to-Open-XML-Translator/blob/master/UofTranslatorLib/resources/word/oox2uof/revisions.xsl.</p:documentation>
+  
+  <p:option name="operation" as="xs:string" select="'accept'" values="('accept', 'reject')">
+   <p:documentation>How to process existing revisions: accept or reject them</p:documentation>
+  </p:option>
+  
+  <p:output port="result" primary="true">
+   <p:documentation>Docx or OOXML document with processed revisions, i.e. inserted, moved deleted and formatted spans or paragraphs. Revisions will be acctepted or rejected.</p:documentation>
+  </p:output>
+  
+  <p:input port="source" primary="true">
+   <p:documentation>Source document, ie. DOCX file.</p:documentation>
+  </p:input>
+  
+  <p:variable name="content-type" select="p:document-property(., 'content-type')"/>
+  <p:choose>
+   <p:when test="$content-type eq 'application/xml'">
+    <dxd:process-revisions-ooxml operation="{$operation}" />
+   </p:when>
+   <p:when test="$content-type eq 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">    
+    <dxd:process-revisions-docx operation="{$operation}" />
+   </p:when>
+   <p:otherwise>
+    <p:identity>
+     <p:with-input port="source"><c:result>Unknown document type: {$content-type}</c:result></p:with-input>
+    </p:identity>
+   </p:otherwise>
+  </p:choose>
   
  </p:declare-step>
  
