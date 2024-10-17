@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
- xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:math="http://www.w3.org/2005/xpath-functions/math"
- xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
- xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
- exclude-result-prefixes="xs math xd"
- version="3.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+ exclude-result-prefixes="xs math xd" version="3.0">
  <xd:doc scope="stylesheet">
   <xd:desc>
    <xd:p><xd:b>Created on:</xd:b> May 14, 2024</xd:p>
    <xd:p><xd:b>Author:</xd:b> Boris</xd:p>
-   <xd:p></xd:p>
+   <xd:p />
   </xd:desc>
  </xd:doc>
- 
- <xsl:strip-space elements="*"/>
+ <xsl:strip-space elements="*" />
  <xsl:output method="xml" indent="yes" />
- <xsl:mode on-no-match="shallow-copy"/>
- 
+ <xsl:mode on-no-match="shallow-copy" />
  <xd:doc>
   <xd:desc>
-   <xd:p><xd:a href="https://c-rex.net/samples/ooxml/e1/Part4/OOXML_P4_DOCX_delInstrText_topic_ID0EGGS1.html">See</xd:a></xd:p>
+   <xd:p>
+    <xd:a href="https://c-rex.net/samples/ooxml/e1/Part4/OOXML_P4_DOCX_delInstrText_topic_ID0EGGS1.html">See</xd:a>
+   </xd:p>
    <w:fldchar w:type="begin" />
    <w:ins>
     <w:r>
@@ -31,14 +26,11 @@
       <w:delInstrText>FORMFIELDTEXT</w:delInstrText>
      </w:r>
     </w:del>
-    <w:fldChar w:type="seperate" />
-    …
-    <w:fldChar w:type="end" />
+    <w:fldChar w:type="seperate" /> … <w:fldChar w:type="end" />
    </w:ins>
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:delInstrText" />
- 
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -56,7 +48,7 @@
      <w:t xml:space="preserve">Some text.</w:t>
     </w:r>
     <w:moveFromRangeStart w:id="2" w:name="move1" />
-    <w:moveFrom w:id="3" >
+    <w:moveFrom w:id="3">
      <w:r>
       <w:t>Some moved text.</w:t>
      </w:r>
@@ -66,7 +58,6 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:moveToRangeStart | w:moveFromRangeStart | w:moveToRangeEnd | w:moveFromRangeEnd" />
- 
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -75,7 +66,6 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:moveFrom" />
- 
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -86,7 +76,6 @@
  <xsl:template match="w:moveTo">
   <xsl:apply-templates />
  </xsl:template>
- 
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -94,18 +83,17 @@
    </xd:p>
    <xd:p>The child element of this element contains the complete set of run properties which were applied to this run before this revision.</xd:p>
    <w:rPr>
-    <w:b/>
-    <w:i/>
+    <w:b />
+    <w:i />
     <w:rPrChange w:id="0" w:date="01-01-2006T12:00:00" w:author="John Doe">
      <w:rPr>
-      <w:i/>
+      <w:i />
      </w:rPr>
     </w:rPrChange>
    </w:rPr>
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:rPrChange" />
- 
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -113,15 +101,14 @@
    </xd:p>
    <xd:p>The child element of this element contains the complete set of paragraph properties which were applied to this paragraph before this revision.</xd:p>
    <w:pPr>
-    <w:jc w:val="center"/>
+    <w:jc w:val="center" />
     <w:pPrChange w:id="0" w:date="01-01-2006T12:00:00" w:author="John Doe">
-     <w:pPr/>
+     <w:pPr />
     </w:pPrChange>
    </w:pPr>
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:pPrChange" />
- 
  <xd:doc>
   <xd:desc>
    <xd:p><xd:a href="https://c-rex.net/samples/ooxml/e1/Part4/OOXML_P4_DOCX_Inline_topic_ID0EW2IV.html?hl=w%3Adel">See</xd:a> amd <xd:a href="https://c-rex.net/samples/ooxml/e1/Part3/OOXML_P3_Primer_Revisions_topic_ID0E3PCK.html?hl=w%3Ains">w:ins</xd:a></xd:p>
@@ -142,7 +129,7 @@
     <w:r>
      <w:t xml:space="preserve"> dog.</w:t>
     </w:r>
-   </w:p> 
+   </w:p>
    <w:p>
     <w:r>
      <w:t>Some</w:t>
@@ -156,10 +143,10 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:del | w:delText" />
+ <xsl:template match="w:rPr[w:del]" />
  <xsl:template match="w:ins">
   <xsl:apply-templates />
  </xsl:template>
- 
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -174,31 +161,31 @@
      </w:pPrChange>
     </w:pPr>
    </w:p>
-   <xd:p>This element specifies that the paragraph mark delimiting the end of a paragraph within a WordprocessingML document shall be treated as deleted (i.e. the contents of this paragraph are no longer delimited by this paragraph mark, and are combined with the following paragraph - but those contents shall not automatically be marked as deleted) as part of a tracked revision.</xd:p>
+   <xd:p>This element specifies that the paragraph mark delimiting the end of a paragraph within a WordprocessingML document shall be treated as deleted (i.e. the contents of this paragraph are no longer delimited by this paragraph mark, and are combined with the following paragraph - but those
+    contents shall not automatically be marked as deleted) as part of a tracked revision.</xd:p>
    <xd:p>Místo Delimitator_hesel + Heslove_zahlavi má být Delimitator_hesel </xd:p>
    <w:p>
     <w:pPr>
-     <w:pStyle w:val="Heslovezahlavi"/>
+     <w:pStyle w:val="Heslovezahlavi" />
      <w:rPr>
-      <w:del w:id="799" w:author="Kateřina Voleková" w:date="2023-01-17T10:05:00Z"/>
+      <w:del w:id="799" w:author="Kateřina Voleková" w:date="2023-01-17T10:05:00Z" />
      </w:rPr>
      <w:pPrChange w:id="800" w:author="Kateřina Voleková" w:date="2023-01-17T10:05:00Z">
       <w:pPr>
-       <w:pStyle w:val="Delimitatorhesel"/>
+       <w:pStyle w:val="Delimitatorhesel" />
       </w:pPr>
      </w:pPrChange>
     </w:pPr>
    </w:p>
   </xd:desc>
-  
  </xd:doc>
  <xsl:template match="w:pPr[w:rPr[w:del]][w:pPrChange]">
   <xsl:copy>
    <xsl:copy-of select="@*" />
-   <xsl:apply-templates select="w:pPrChange/*" />
+   <!--<xsl:apply-templates select="w:pPrChange/*" />-->
+   <xsl:apply-templates />
   </xsl:copy>
  </xsl:template>
- 
  <xd:doc>
   <xd:desc>
    <xd:p>Completely removed paragraph, i.e. paragraph sing and text (runs).</xd:p>
@@ -222,8 +209,7 @@
    </w:p>
   </xd:desc>
  </xd:doc>
- <xsl:template match="w:p[w:pPr[w:rPr[w:del]]][not(w:r)]" />
- 
+ <xsl:template match="w:p[w:pPr[w:rPr[w:del]]][not(w:r)][not(w:ins)]" priority="2" />
  <xd:doc>
   <xd:desc>
    <xd:p>Merged paragraph with the following one.</xd:p>
@@ -250,16 +236,52 @@
    </w:p>
   </xd:desc>
  </xd:doc>
- <xsl:template match="w:p[w:pPr[w:rPr[w:del]]][w:r]">
+ <xsl:template match="w:p[w:pPr[w:rPr[w:del]]][w:r or w:ins]">
   <xsl:copy>
    <xsl:copy-of select="@*" />
-   <xsl:apply-templates select="following-sibling::*[1]/w:pPr" />
-   <xsl:apply-templates select="* except w:pPr" />
-   <xsl:apply-templates select="following-sibling::*[1]/* except w:pPr" />
+   <!--<xsl:apply-templates select="following-sibling::w:p[w:r or w:ins][1]/w:pPr" />
+   <xsl:apply-templates select="* except w:pPr" />-->
+   <xsl:apply-templates />
+   <xsl:apply-templates select="following-sibling::w:p[w:r or w:ins][1]/(* except w:pPr)" />
   </xsl:copy>
  </xsl:template>
- 
- <xsl:template match="w:p[preceding-sibling::*[1][self::w:p[w:pPr[w:rPr[w:del]]][w:r]]]" />
- 
- 
+ <xsl:template match="w:p[preceding-sibling::*[self::w:p[w:pPr[w:rPr[w:del]]][w:r or w:ins]]][1]" />
+ <xsl:template match="w:p[not(w:pPr[w:rPr[w:del]])]"  priority="2">
+  <xsl:variable name="previous" select="
+    preceding-sibling::w:p
+    [following-sibling::*[1][self::w:p]] (: the same :)
+    [not(w:pPr) or not(w:pPr[w:rPr[w:del]])] (: :)
+    [1]" />
+  <xsl:choose>
+   <xsl:when test="empty($previous)">
+    <xsl:copy>
+     <xsl:copy-of select="@*" />
+     <xsl:apply-templates />
+    </xsl:copy>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:variable name="prev-merged" select="
+      preceding-sibling::w:p
+      [following-sibling::*[1][self::w:p]]
+      [w:pPr[w:rPr[w:del]]][w:r or w:ins][1]
+      " />
+    <xsl:choose>
+     <xsl:when test="empty($prev-merged)">
+      <xsl:copy>
+       <xsl:copy-of select="@*" />
+       <xsl:apply-templates />
+      </xsl:copy>
+     </xsl:when>
+     <xsl:when test="$prev-merged >> $previous" />
+     <xsl:otherwise>
+      <xsl:copy>
+       <xsl:copy-of select="@*" />
+       <xsl:apply-templates />
+      </xsl:copy>
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template>
+ <xsl:template match="w:r[w:delTex]" />
 </xsl:stylesheet>
