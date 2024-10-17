@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+ xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+ xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:oel="http://schemas.microsoft.com/office/2019/extlst"
+ xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+ xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+ xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+ xmlns:w16du="http://schemas.microsoft.com/office/word/2023/wordml/word16du" xmlns:w16sdtdh="http://schemas.microsoft.com/office/word/2020/wordml/sdtdatahash" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+ xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
+ mc:Ignorable="w14 w15 w16se w16cid w16 w16cex w16sdtdh w16du wp14">
+ <w:body>
+  <w:p w14:paraId="4854AB17" w14:textId="0C18D523" w:rsidR="00184D37" w:rsidRPr="00363F1B" w:rsidRDefault="00184D37" w:rsidP="00184D37">
+   <w:pPr>
+    <w:pStyle w:val="Vykladvyznamu" />
+    <w:rPr>
+     <w:ins w:id="1516" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:ins w:id="1517" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z">
+    <w:r w:rsidRPr="009C2F00">
+     <w:rPr>
+      <w:rStyle w:val="delimitatorvyznamu" />
+     </w:rPr>
+     <w:t xml:space="preserve">4. </w:t>
+    </w:r>
+    <w:r w:rsidRPr="009C2F00">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:t>text, zvl. krátký, uspořádaný do řádků</w:t>
+    </w:r>
+    <w:r>
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:t xml:space="preserve">: </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1518" w:author="Stepan Simek" w:date="2022-06-27T11:05:00Z">
+    <w:r w:rsidR="000104A3">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:t xml:space="preserve">a když čite Juda, syn Nathanie, tři aneb čtyři řádky, rozprašti král list nožíkem písařovým </w:t>
+    </w:r>
+    <w:r w:rsidR="000104A3">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:t xml:space="preserve">ComestC </w:t>
+    </w:r>
+    <w:r w:rsidR="000104A3">
+     <w:t xml:space="preserve">203v (Jr 36,23: </w:t>
+    </w:r>
+    <w:r w:rsidR="000104A3" w:rsidRPr="000104A3">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+      <w:rPrChange w:id="1519" w:author="Stepan Simek" w:date="2022-06-27T11:05:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>listy</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1520" w:author="Stepan Simek" w:date="2022-06-27T11:06:00Z">
+    <w:r w:rsidR="00E94E4B">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1521" w:author="Stepan Simek" w:date="2022-06-27T11:05:00Z">
+    <w:r w:rsidR="000104A3" w:rsidRPr="000104A3">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+      <w:rPrChange w:id="1522" w:author="Stepan Simek" w:date="2022-06-27T11:05:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>BiblDrážď</w:t>
+    </w:r>
+    <w:r w:rsidR="000104A3" w:rsidRPr="000D608E">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+      <w:rPrChange w:id="1523" w:author="Stepan Simek" w:date="2022-06-27T11:10:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">, Ol, </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1524" w:author="Stepan Simek" w:date="2022-06-27T11:10:00Z">
+    <w:r w:rsidR="000D608E" w:rsidRPr="000D608E">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+      <w:rPrChange w:id="1525" w:author="Stepan Simek" w:date="2022-06-27T11:10:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>Praž</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1526" w:author="Stepan Simek" w:date="2022-06-27T11:05:00Z">
+    <w:r w:rsidR="000104A3">
+     <w:t xml:space="preserve">) </w:t>
+    </w:r>
+    <w:r w:rsidR="000104A3" w:rsidRPr="00AB64F9">
+     <w:rPr>
+      <w:rStyle w:val="cizojazycnyekvivalent" />
+     </w:rPr>
+     <w:t>pagellas</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1527" w:author="Stepan Simek" w:date="2022-06-27T12:28:00Z">
+    <w:r w:rsidR="005740A4" w:rsidRPr="005740A4">
+     <w:rPr>
+      <w:rPrChange w:id="1528" w:author="Stepan Simek" w:date="2022-06-27T12:28:00Z">
+       <w:rPr>
+        <w:rStyle w:val="komentar" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>;</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1529" w:author="Stepan Simek" w:date="2022-07-14T10:44:00Z">
+    <w:r w:rsidR="00E45ACC">
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1530" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z">
+    <w:r w:rsidRPr="00AB64F9">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:t>v knihách na mezech vedlé řádkuov písma neb záhonuov</w:t>
+    </w:r>
+    <w:r w:rsidRPr="005740A4">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:t xml:space="preserve"> písmo latinské ukazuje, kde písmo jest v zákoně božím neb v ustavení a kde píší světí</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1531" w:author="Stepan Simek" w:date="2022-06-27T12:34:00Z">
+    <w:r w:rsidR="00DB4FAD">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1532" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z">
+    <w:r w:rsidRPr="00AB64F9">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:t>HusSvatokup</w:t>
+    </w:r>
+    <w:r w:rsidRPr="005740A4">
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1533" w:author="Stepan Simek" w:date="2022-06-27T12:34:00Z">
+    <w:r w:rsidR="00DB4FAD">
+     <w:t>108v</w:t>
+    </w:r>
+   </w:ins>
+  </w:p>
+  <w:p w14:paraId="4BC04683" w14:textId="61C79841" w:rsidR="00184D37" w:rsidRDefault="00184D37" w:rsidP="00184D37">
+   <w:pPr>
+    <w:pStyle w:val="Vykladvyznamu" />
+    <w:rPr>
+     <w:ins w:id="1534" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:ins w:id="1535" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z">
+    <w:r>
+     <w:rPr>
+      <w:rStyle w:val="delimitatorvyznamu" />
+     </w:rPr>
+     <w:t xml:space="preserve">5. </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1536" w:author="Stepan Simek" w:date="2022-09-12T12:29:00Z">
+    <w:r w:rsidR="002D02B1">
+     <w:rPr>
+      <w:rStyle w:val="nonparej" />
+     </w:rPr>
+     <w:t>spec</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1537" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z">
+    <w:r>
+     <w:rPr>
+      <w:rStyle w:val="nonparej" />
+     </w:rPr>
+     <w:t xml:space="preserve">. </w:t>
+    </w:r>
+    <w:r w:rsidRPr="00A5065B">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:t>šňůra, pracovní pomůcka řemeslníků:</w:t>
+    </w:r>
+    <w:r>
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+    <w:r>
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:t xml:space="preserve">linea pravidlo vel řádek </w:t>
+    </w:r>
+    <w:r>
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:t xml:space="preserve">SlovOstřS </w:t>
+    </w:r>
+    <w:r>
+     <w:t>90</w:t>
+    </w:r>
+    <w:r w:rsidRPr="00A5065B">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+     </w:rPr>
+     <w:t>a</w:t>
+    </w:r>
+   </w:ins>
+  </w:p>
+  <w:p w14:paraId="5198F3DD" w14:textId="2F161361" w:rsidR="00DA1FDF" w:rsidRDefault="00184D37" w:rsidP="00DA1FDF">
+   <w:pPr>
+    <w:pStyle w:val="Vykladvyznamu" />
+    <w:rPr>
+     <w:ins w:id="1538" w:author="Stepan Simek" w:date="2022-09-12T12:29:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:ins w:id="1539" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z">
+    <w:r>
+     <w:rPr>
+      <w:rStyle w:val="delimitatorvyznamu" />
+     </w:rPr>
+     <w:t xml:space="preserve">6. </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1540" w:author="Stepan Simek" w:date="2022-06-27T10:30:00Z">
+    <w:r w:rsidR="00DA1FDF" w:rsidRPr="000D018C">
+     <w:rPr>
+      <w:rStyle w:val="nonparej" />
+     </w:rPr>
+     <w:t xml:space="preserve">bibl. </w:t>
+    </w:r>
+    <w:r w:rsidR="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:t xml:space="preserve">linka, čára označující jednotku na slunečních hodinách, „řád“ 3: </w:t>
+    </w:r>
+    <w:r w:rsidR="00DA1FDF" w:rsidRPr="008D16D3">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+      <w:rPrChange w:id="1541" w:author="Stepan Simek" w:date="2022-06-27T12:42:00Z">
+       <w:rPr>
+        <w:rStyle w:val="doklad" />
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">aj toť já navrátiti káži stieni řádkóv, přěs něžto jest sešlo v uorloji Achaz v slunci za sě desět řádkuov </w:t>
+    </w:r>
+    <w:r w:rsidR="00DA1FDF" w:rsidRPr="008D16D3">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+      <w:rPrChange w:id="1542" w:author="Stepan Simek" w:date="2022-06-27T12:42:00Z">
+       <w:rPr>
+        <w:rStyle w:val="pramen" />
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">BiblDrážď </w:t>
+    </w:r>
+    <w:r w:rsidR="00DA1FDF" w:rsidRPr="008D16D3">
+     <w:rPr>
+      <w:rPrChange w:id="1543" w:author="Stepan Simek" w:date="2022-06-27T12:42:00Z">
+       <w:rPr>
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">Is 38,8 </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1544" w:author="Stepan Simek" w:date="2022-06-27T10:44:00Z">
+    <w:r w:rsidRPr="008D16D3">
+     <w:rPr>
+      <w:rPrChange w:id="1545" w:author="Stepan Simek" w:date="2022-06-27T12:42:00Z">
+       <w:rPr>
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>(</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1546" w:author="Stepan Simek" w:date="2022-06-27T12:47:00Z">
+    <w:r w:rsidR="002717C8" w:rsidRPr="002717C8">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+      <w:rPrChange w:id="1547" w:author="Stepan Simek" w:date="2022-06-27T12:47:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>řádkóv</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1548" w:author="Stepan Simek" w:date="2022-06-27T12:48:00Z">
+    <w:r w:rsidR="00276741">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1549" w:author="Stepan Simek" w:date="2022-06-27T12:47:00Z">
+    <w:r w:rsidR="002717C8" w:rsidRPr="002717C8">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+      <w:rPrChange w:id="1550" w:author="Stepan Simek" w:date="2022-06-27T12:47:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>BiblLit</w:t>
+    </w:r>
+    <w:r w:rsidR="002717C8">
+     <w:t xml:space="preserve">, </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1551" w:author="Stepan Simek" w:date="2022-06-27T12:42:00Z">
+    <w:r w:rsidR="008D16D3" w:rsidRPr="002717C8">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+      <w:rPrChange w:id="1552" w:author="Stepan Simek" w:date="2022-06-27T12:47:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">dtto Ol, </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1553" w:author="Stepan Simek" w:date="2022-06-27T12:46:00Z">
+    <w:r w:rsidR="002717C8" w:rsidRPr="002717C8">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+      <w:rPrChange w:id="1554" w:author="Stepan Simek" w:date="2022-06-27T12:47:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">Pad, </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1555" w:author="Stepan Simek" w:date="2022-06-27T12:44:00Z">
+    <w:r w:rsidR="008D16D3" w:rsidRPr="002717C8">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+      <w:rPrChange w:id="1556" w:author="Stepan Simek" w:date="2022-06-27T12:47:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>Praž</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1557" w:author="Stepan Simek" w:date="2022-06-27T12:47:00Z">
+    <w:r w:rsidR="002717C8">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+     </w:rPr>
+     <w:t xml:space="preserve"> – invar.</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1558" w:author="Stepan Simek" w:date="2022-06-27T10:44:00Z">
+    <w:r w:rsidRPr="008D16D3">
+     <w:rPr>
+      <w:rPrChange w:id="1559" w:author="Stepan Simek" w:date="2022-06-27T12:42:00Z">
+       <w:rPr>
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">) </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1560" w:author="Stepan Simek" w:date="2022-06-27T10:30:00Z">
+    <w:r w:rsidR="00DA1FDF" w:rsidRPr="008D16D3">
+     <w:rPr>
+      <w:rStyle w:val="cizojazycnyekvivalent" />
+      <w:rPrChange w:id="1561" w:author="Stepan Simek" w:date="2022-06-27T12:42:00Z">
+       <w:rPr>
+        <w:rStyle w:val="cizojazycnyekvivalent" />
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>umbram linearum</w:t>
+    </w:r>
+    <w:r w:rsidR="00DA1FDF" w:rsidRPr="008D16D3">
+     <w:rPr>
+      <w:rPrChange w:id="1562" w:author="Stepan Simek" w:date="2022-06-27T12:42:00Z">
+       <w:rPr>
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">; </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1563" w:author="Stepan Simek" w:date="2022-06-27T10:49:00Z">
+    <w:r w:rsidR="00554E1C" w:rsidRPr="00554E1C">
+     <w:rPr>
+      <w:rPrChange w:id="1564" w:author="Stepan Simek" w:date="2022-06-27T10:49:00Z">
+       <w:rPr>
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">pod. </w:t>
+    </w:r>
+    <w:r w:rsidR="00554E1C" w:rsidRPr="00554E1C">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+      <w:rPrChange w:id="1565" w:author="Stepan Simek" w:date="2022-06-27T10:49:00Z">
+       <w:rPr>
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>VýklKruml</w:t>
+    </w:r>
+    <w:r w:rsidR="00554E1C" w:rsidRPr="00554E1C">
+     <w:rPr>
+      <w:rPrChange w:id="1566" w:author="Stepan Simek" w:date="2022-06-27T10:49:00Z">
+       <w:rPr>
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve"> 149r; </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1567" w:author="Stepan Simek" w:date="2022-08-18T11:20:00Z">
+    <w:r w:rsidR="001C2DE6" w:rsidRPr="001C2DE6">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+      <w:rPrChange w:id="1568" w:author="Stepan Simek" w:date="2022-08-18T11:20:00Z">
+       <w:rPr>
+        <w:rStyle w:val="doklad" />
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t xml:space="preserve">lineis </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1569" w:author="Stepan Simek" w:date="2022-06-27T10:30:00Z">
+    <w:r w:rsidR="00DA1FDF" w:rsidRPr="001C2DE6">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+      <w:rPrChange w:id="1570" w:author="Stepan Simek" w:date="2022-08-18T11:20:00Z">
+       <w:rPr>
+        <w:rStyle w:val="doklad" />
+        <w:color w:val="FF0000" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>řádkóv t. hodin</w:t>
+    </w:r>
+    <w:r w:rsidR="00DA1FDF" w:rsidRPr="00E02A97">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+      <w:color w:val="FF0000" />
+     </w:rPr>
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+    <w:r w:rsidR="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:t xml:space="preserve">MamVíd </w:t>
+    </w:r>
+    <w:r w:rsidR="00DA1FDF">
+     <w:t>132</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1571" w:author="Stepan Simek" w:date="2022-08-18T11:20:00Z">
+    <w:r w:rsidR="001C2DE6">
+     <w:t>r</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1572" w:author="Stepan Simek" w:date="2022-06-27T10:45:00Z">
+    <w:r w:rsidR="00A651C1">
+     <w:t xml:space="preserve"> (4 Rg 20,9)</w:t>
+    </w:r>
+   </w:ins>
+  </w:p>
+  <w:p w14:paraId="5FF28758" w14:textId="2D0B5608" w:rsidR="00B95875" w:rsidRPr="00363F1B" w:rsidDel="00184D37" w:rsidRDefault="002D02B1">
+   <w:pPr>
+    <w:pStyle w:val="Poznamka" />
+    <w:rPr>
+     <w:del w:id="1573" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z" />
+    </w:rPr>
+    <w:pPrChange w:id="1574" w:author="Stepan Simek" w:date="2022-06-27T10:52:00Z">
+     <w:pPr>
+      <w:pStyle w:val="Vykladvyznamu" />
+     </w:pPr>
+    </w:pPrChange>
+   </w:pPr>
+   <w:ins w:id="1575" w:author="Stepan Simek" w:date="2022-09-12T12:29:00Z">
+    <w:r>
+     <w:t>K 5: jen tento doklad</w:t>
+    </w:r>
+   </w:ins>
+   <w:del w:id="1576" w:author="Stepan Simek" w:date="2022-06-27T10:38:00Z">
+    <w:r w:rsidR="00F83B75" w:rsidRPr="00F83B75" w:rsidDel="00261E35">
+     <w:rPr>
+      <w:rStyle w:val="delimitatorvyznamu" />
+     </w:rPr>
+     <w:delText xml:space="preserve">2. </w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1577" w:author="Stepan Simek" w:date="2022-06-27T10:28:00Z">
+    <w:r w:rsidR="00B95875" w:rsidRPr="00AB64F9" w:rsidDel="008D34B6">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:delText>vodorovná řada písme</w:delText>
+    </w:r>
+    <w:r w:rsidR="00B95875" w:rsidRPr="008D34B6" w:rsidDel="008D34B6">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:delText>n v textu</w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1578" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z">
+    <w:r w:rsidR="00B95875" w:rsidRPr="008D34B6" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:delText>:</w:delText>
+    </w:r>
+    <w:r w:rsidR="00B95875" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:delText xml:space="preserve"> </w:delText>
+    </w:r>
+    <w:r w:rsidR="00B95875" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:delText xml:space="preserve">a když čite Juda, syn Nathanie, tři aneb čtyři řádky, rozpraští král list nožíkem písařovým </w:delText>
+    </w:r>
+    <w:r w:rsidR="00B95875" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:delText xml:space="preserve">ComestC </w:delText>
+    </w:r>
+    <w:r w:rsidR="00B95875" w:rsidDel="00184D37">
+     <w:delText xml:space="preserve">203b; </w:delText>
+    </w:r>
+    <w:r w:rsidR="00B95875" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:delText>co s</w:delText>
+    </w:r>
+    <w:r w:rsidR="00363F1B" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:delText>tojí podlé kapitoly jeden řádek</w:delText>
+    </w:r>
+    <w:r w:rsidR="00B95875" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:delText xml:space="preserve"> rubrikú červenú psáno</w:delText>
+    </w:r>
+    <w:r w:rsidR="00363F1B" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:delText xml:space="preserve">, ta ukáže, na kterém listě v těch kníhách kapitolum co znamenává </w:delText>
+    </w:r>
+    <w:r w:rsidR="00363F1B" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:delText xml:space="preserve">MartKronA </w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1579" w:author="Stepan Simek" w:date="2022-06-27T10:30:00Z">
+    <w:r w:rsidR="00363F1B" w:rsidDel="00182407">
+     <w:delText>1b</w:delText>
+    </w:r>
+   </w:del>
+  </w:p>
+  <w:p w14:paraId="5FF28759" w14:textId="33F1093B" w:rsidR="0065465B" w:rsidRPr="00D77607" w:rsidDel="00DA1FDF" w:rsidRDefault="00F83B75" w:rsidP="0065465B">
+   <w:pPr>
+    <w:pStyle w:val="Vykladvyznamu" />
+    <w:rPr>
+     <w:del w:id="1580" w:author="Stepan Simek" w:date="2022-06-27T10:30:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:del w:id="1581" w:author="Stepan Simek" w:date="2022-06-27T10:30:00Z">
+    <w:r w:rsidDel="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="delimitatorvyznamu" />
+     </w:rPr>
+     <w:delText xml:space="preserve">3. </w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1582" w:author="Stepan Simek" w:date="2022-06-27T10:25:00Z">
+    <w:r w:rsidR="001A3192" w:rsidRPr="00A60332" w:rsidDel="001A226D">
+     <w:rPr>
+      <w:rStyle w:val="spojitelnost" />
+      <w:color w:val="FF0000" />
+      <w:rPrChange w:id="1583" w:author="Stepan Simek" w:date="2022-06-27T10:26:00Z">
+       <w:rPr>
+        <w:rStyle w:val="spojitelnost" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText xml:space="preserve">čeho </w:delText>
+    </w:r>
+    <w:r w:rsidR="001A3192" w:rsidRPr="00A60332" w:rsidDel="001A226D">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+      <w:color w:val="FF0000" />
+      <w:rPrChange w:id="1584" w:author="Stepan Simek" w:date="2022-06-27T10:26:00Z">
+       <w:rPr>
+        <w:rStyle w:val="vyznam" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText xml:space="preserve">stupeň, oddíl, část hierarchicky členěného celku: </w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1585" w:author="Stepan Simek" w:date="2022-06-27T10:30:00Z">
+    <w:r w:rsidR="001A3192" w:rsidRPr="00A60332" w:rsidDel="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+      <w:color w:val="FF0000" />
+      <w:rPrChange w:id="1586" w:author="Stepan Simek" w:date="2022-06-27T10:26:00Z">
+       <w:rPr>
+        <w:rStyle w:val="doklad" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText xml:space="preserve">aj toť já navrátiti káži stieni řádkóv, přěs něžto jest sešlo v uorloji Achaz v slunci za sě desět řádkuov </w:delText>
+    </w:r>
+    <w:r w:rsidR="001A3192" w:rsidRPr="00A60332" w:rsidDel="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+      <w:color w:val="FF0000" />
+      <w:rPrChange w:id="1587" w:author="Stepan Simek" w:date="2022-06-27T10:26:00Z">
+       <w:rPr>
+        <w:rStyle w:val="pramen" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText xml:space="preserve">BiblDrážď </w:delText>
+    </w:r>
+    <w:r w:rsidR="00D77607" w:rsidRPr="00A60332" w:rsidDel="00DA1FDF">
+     <w:rPr>
+      <w:color w:val="FF0000" />
+      <w:rPrChange w:id="1588" w:author="Stepan Simek" w:date="2022-06-27T10:26:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText xml:space="preserve">Is 38,8 </w:delText>
+    </w:r>
+    <w:r w:rsidR="00D77607" w:rsidRPr="00A60332" w:rsidDel="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="cizojazycnyekvivalent" />
+      <w:color w:val="FF0000" />
+      <w:rPrChange w:id="1589" w:author="Stepan Simek" w:date="2022-06-27T10:26:00Z">
+       <w:rPr>
+        <w:rStyle w:val="cizojazycnyekvivalent" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText>umbram linearum</w:delText>
+    </w:r>
+    <w:r w:rsidR="00D77607" w:rsidRPr="00A60332" w:rsidDel="00DA1FDF">
+     <w:rPr>
+      <w:color w:val="FF0000" />
+      <w:rPrChange w:id="1590" w:author="Stepan Simek" w:date="2022-06-27T10:26:00Z">
+       <w:rPr />
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText xml:space="preserve">; </w:delText>
+    </w:r>
+    <w:r w:rsidR="00D77607" w:rsidRPr="00A60332" w:rsidDel="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+      <w:color w:val="FF0000" />
+      <w:rPrChange w:id="1591" w:author="Stepan Simek" w:date="2022-06-27T10:26:00Z">
+       <w:rPr>
+        <w:rStyle w:val="doklad" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText xml:space="preserve">řádkóv t. hodin lineis </w:delText>
+    </w:r>
+    <w:r w:rsidR="00D77607" w:rsidDel="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:delText xml:space="preserve">MamVíd </w:delText>
+    </w:r>
+    <w:r w:rsidR="00215603" w:rsidDel="00DA1FDF">
+     <w:delText>132a</w:delText>
+    </w:r>
+   </w:del>
+  </w:p>
+  <w:p w14:paraId="5FF2875A" w14:textId="109D016C" w:rsidR="0065465B" w:rsidDel="00540AD6" w:rsidRDefault="00F83B75" w:rsidP="00AB64F9">
+   <w:pPr>
+    <w:pStyle w:val="Vykladvyznamu" />
+    <w:rPr>
+     <w:del w:id="1592" w:author="Stepan Simek" w:date="2022-06-27T10:41:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:del w:id="1593" w:author="Stepan Simek" w:date="2022-06-27T10:38:00Z">
+    <w:r w:rsidDel="00261E35">
+     <w:rPr>
+      <w:rStyle w:val="delimitatorvyznamu" />
+     </w:rPr>
+     <w:delText xml:space="preserve">4. </w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1594" w:author="Stepan Simek" w:date="2022-06-27T10:41:00Z">
+    <w:r w:rsidR="00447954" w:rsidDel="00540AD6">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:delText xml:space="preserve">řád, záznam o útratě (zvl. v hostinci), účet: </w:delText>
+    </w:r>
+    <w:r w:rsidR="00447954" w:rsidDel="00540AD6">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:delText xml:space="preserve">mohúť s námi haléř na řádku propíti a všickni téměř s námi mnoho kvasuov a obyčejuov měli jsú </w:delText>
+    </w:r>
+    <w:r w:rsidR="00447954" w:rsidDel="00540AD6">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:delText xml:space="preserve">TovHád </w:delText>
+    </w:r>
+    <w:r w:rsidR="00182715" w:rsidDel="00540AD6">
+     <w:delText>127a</w:delText>
+    </w:r>
+   </w:del>
+  </w:p>
+  <w:p w14:paraId="5FF2875B" w14:textId="25E48B49" w:rsidR="00DC47E7" w:rsidDel="00184D37" w:rsidRDefault="00F83B75" w:rsidP="00DC47E7">
+   <w:pPr>
+    <w:pStyle w:val="Vykladvyznamu" />
+    <w:rPr>
+     <w:del w:id="1595" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:del w:id="1596" w:author="Stepan Simek" w:date="2022-06-27T10:38:00Z">
+    <w:r w:rsidRPr="00540AD6" w:rsidDel="00261E35">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+      <w:rPrChange w:id="1597" w:author="Stepan Simek" w:date="2022-06-27T10:41:00Z">
+       <w:rPr>
+        <w:rStyle w:val="delimitatorvyznamu" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:delText xml:space="preserve">5. </w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1598" w:author="Stepan Simek" w:date="2022-06-27T10:41:00Z">
+    <w:r w:rsidR="00DC47E7" w:rsidRPr="00AB64F9" w:rsidDel="00540AD6">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:delText>náčiní sloužící k měření n. počítání něčeho</w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1599" w:author="Stepan Simek" w:date="2022-06-27T10:43:00Z">
+    <w:r w:rsidR="00DC47E7" w:rsidRPr="00540AD6" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:delText>:</w:delText>
+    </w:r>
+    <w:r w:rsidR="00DC47E7" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="vyznam" />
+     </w:rPr>
+     <w:delText xml:space="preserve"> </w:delText>
+    </w:r>
+    <w:r w:rsidR="00DC47E7" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="doklad" />
+     </w:rPr>
+     <w:delText xml:space="preserve">linea pravidlo vel řádek </w:delText>
+    </w:r>
+    <w:r w:rsidR="00DC47E7" w:rsidDel="00184D37">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:delText xml:space="preserve">SlovOstřS </w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1600" w:author="Stepan Simek" w:date="2022-06-27T10:42:00Z">
+    <w:r w:rsidR="00DC47E7" w:rsidDel="00540AD6">
+     <w:delText>90a</w:delText>
+    </w:r>
+   </w:del>
+  </w:p>
+  <w:p w14:paraId="062EFDA8" w14:textId="77777777" w:rsidR="00CF2AF0" w:rsidRDefault="00447954" w:rsidP="00447954">
+   <w:pPr>
+    <w:pStyle w:val="Poznamka" />
+    <w:rPr>
+     <w:ins w:id="1601" w:author="Stepan Simek" w:date="2022-09-13T13:52:00Z" />
+     <w:rStyle w:val="komentar" />
+    </w:rPr>
+   </w:pPr>
+   <w:r w:rsidRPr="00DA1FDF">
+    <w:rPr>
+     <w:rStyle w:val="komentar" />
+     <w:rPrChange w:id="1602" w:author="Stepan Simek" w:date="2022-06-27T10:32:00Z">
+      <w:rPr />
+     </w:rPrChange>
+    </w:rPr>
+    <w:t xml:space="preserve">Nelze vyloučit též podobu řádka. </w:t>
+   </w:r>
+   <w:ins w:id="1603" w:author="Stepan Simek" w:date="2022-06-27T10:32:00Z">
+    <w:r w:rsidR="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+     </w:rPr>
+     <w:t>– ŠŠ: to teda podle mě v pohodě vyloučit lze, srov. neexistenci stč. f. řada a toho systém</w:t>
+    </w:r>
+   </w:ins>
+   <w:r w:rsidR="007F5807">
+    <w:rPr>
+     <w:rStyle w:val="komentar" />
+    </w:rPr>
+    <w:t>.</w:t>
+   </w:r>
+   <w:ins w:id="1604" w:author="Stepan Simek" w:date="2022-06-27T10:32:00Z">
+    <w:r w:rsidR="00DA1FDF">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+     </w:rPr>
+     <w:t xml:space="preserve"> souvislosti! </w:t>
+    </w:r>
+   </w:ins>
+  </w:p>
+  <w:p w14:paraId="5FF2875C" w14:textId="53C5CD7A" w:rsidR="00447954" w:rsidRPr="00447954" w:rsidRDefault="00447954" w:rsidP="00447954">
+   <w:pPr>
+    <w:pStyle w:val="Poznamka" />
+    <w:rPr>
+     <w:rStyle w:val="nonparej" />
+    </w:rPr>
+   </w:pPr>
+   <w:r>
+    <w:rPr>
+     <w:rStyle w:val="nonparej" />
+    </w:rPr>
+    <w:t>Sr.</w:t>
+   </w:r>
+   <w:ins w:id="1605" w:author="Stepan Simek" w:date="2022-06-27T10:33:00Z">
+    <w:r w:rsidR="00156569">
+     <w:rPr>
+      <w:rStyle w:val="nonparej" />
+     </w:rPr>
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1606" w:author="Stepan Simek" w:date="2022-09-12T13:36:00Z">
+    <w:r w:rsidR="005B36AF">
+     <w:rPr>
+      <w:rStyle w:val="pramen" />
+     </w:rPr>
+     <w:t xml:space="preserve">StčS </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1607" w:author="Stepan Simek" w:date="2022-06-27T10:33:00Z">
+    <w:r w:rsidR="00156569" w:rsidRPr="00156569">
+     <w:rPr>
+      <w:rStyle w:val="odkaz" />
+      <w:rPrChange w:id="1608" w:author="Stepan Simek" w:date="2022-06-27T10:33:00Z">
+       <w:rPr>
+        <w:rStyle w:val="nonparej" />
+       </w:rPr>
+      </w:rPrChange>
+     </w:rPr>
+     <w:t>p</w:t>
+    </w:r>
+   </w:ins>
+   <w:del w:id="1609" w:author="Stepan Simek" w:date="2022-06-27T10:33:00Z">
+    <w:r w:rsidDel="00156569">
+     <w:rPr>
+      <w:rStyle w:val="nonparej" />
+     </w:rPr>
+     <w:delText xml:space="preserve"> </w:delText>
+    </w:r>
+    <w:r w:rsidRPr="00447954" w:rsidDel="00156569">
+     <w:rPr>
+      <w:rStyle w:val="odkaz" />
+     </w:rPr>
+     <w:delText>črta</w:delText>
+    </w:r>
+    <w:r w:rsidDel="00156569">
+     <w:delText xml:space="preserve">, </w:delText>
+    </w:r>
+    <w:r w:rsidRPr="00447954" w:rsidDel="00156569">
+     <w:rPr>
+      <w:rStyle w:val="odkaz" />
+     </w:rPr>
+     <w:delText>p</w:delText>
+    </w:r>
+   </w:del>
+   <w:r w:rsidRPr="00447954">
+    <w:rPr>
+     <w:rStyle w:val="odkaz" />
+    </w:rPr>
+    <w:t>ravidlo</w:t>
+   </w:r>
+   <w:r>
+    <w:t xml:space="preserve">, </w:t>
+   </w:r>
+   <w:r w:rsidRPr="00447954">
+    <w:rPr>
+     <w:rStyle w:val="odkaz" />
+    </w:rPr>
+    <w:t>záhon</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="5FF2875D" w14:textId="2F43AE15" w:rsidR="0065465B" w:rsidRDefault="006818AB" w:rsidP="0065465B">
+   <w:pPr>
+    <w:pStyle w:val="Autor" />
+   </w:pPr>
+   <w:ins w:id="1610" w:author="Stepan Simek" w:date="2022-06-27T10:27:00Z">
+    <w:r>
+     <w:t xml:space="preserve">ŠŠ, </w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1611" w:author="Stepan Simek" w:date="2022-06-27T10:28:00Z">
+    <w:r w:rsidR="008D34B6">
+     <w:t>MV</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1612" w:author="Stepan Simek" w:date="2022-06-27T10:33:00Z">
+    <w:r w:rsidR="003F5F80">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+     </w:rPr>
+     <w:t>ŠŠ: Mílino pův. zpracování lepší než inovace MLH!</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1613" w:author="Stepan Simek" w:date="2022-07-20T10:31:00Z">
+    <w:r w:rsidR="00417BB5">
+     <w:rPr>
+      <w:rStyle w:val="komentar" />
+     </w:rPr>
+     <w:t xml:space="preserve"> potřeba to ověřovat všude, Michal se zjevně snažil o diferenčnost za každou cenu</w:t>
+    </w:r>
+   </w:ins>
+   <w:ins w:id="1614" w:author="Stepan Simek" w:date="2022-06-27T10:28:00Z">
+    <w:r w:rsidR="008D34B6">
+     <w:t xml:space="preserve">, </w:t>
+    </w:r>
+   </w:ins>
+   <w:r w:rsidR="0065465B">
+    <w:t>MLH</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="5FF2875E" w14:textId="77777777" w:rsidR="000C4E91" w:rsidRDefault="000C4E91" w:rsidP="000C4E91">
+   <w:pPr>
+    <w:pStyle w:val="Delimitatorhesel" />
+   </w:pPr>
+  </w:p>
+  <w:sectPr w:rsidR="000C5BB0" w:rsidRPr="00145B73">
+   <w:pgSz w:w="11906" w:h="16838" />
+   <w:pgMar w:top="1417" w:right="1417" w:bottom="1417" w:left="1417" w:header="708" w:footer="708" w:gutter="0" />
+   <w:cols w:space="708" />
+   <w:docGrid w:linePitch="360" />
+  </w:sectPr>
+ </w:body>
+</w:document>

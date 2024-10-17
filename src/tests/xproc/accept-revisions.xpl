@@ -19,6 +19,7 @@
   <p:input port="source" primary="true" sequence="true">
   	<p:document href="../input/revisions.docx" />
   	<p:document href="../input/revisions.xml" />
+  	<p:document href="../input/revisions-essc.xml" />
   </p:input>
    
 	<!-- OUTPUT PORTS -->
