@@ -18,7 +18,7 @@
   		<p:with-input port="source" pipe="source@get-ooxml-content"></p:with-input>
   	</dxd:get-ooxml-content>
 
-  	<p:store href="../output/get-ooxml-content-{$content}.xml" serialization="map{'indent' : true()}" />
+  	<p:store href="../output/get-ooxml-content/{$content}.xml" serialization="map{'indent' : true()}" />
 
   	<p:identity>
   		<p:with-input pipe="result-uri"/>
