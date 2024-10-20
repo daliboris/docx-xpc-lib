@@ -96,8 +96,10 @@
   <xsl:variable name="element-name" select="local-name()"/>
   <xsl:for-each select="@*">
    <xsl:variable name="name" select="local-name()"/>
+   <xsl:variable name="has-default-value" select="dcx:has-default-value($element-name, $name, .)"/>
+   <xsl:variable name="attribute-prefix" select="dcx:get-attribute-name($element-name)"/>
    <xsl:if test="not(dcx:has-default-value($element-name, $name, .))">
-    <xsl:attribute name="{$element-name}-{$name}" select="." /> 
+    <xsl:attribute name="{$attribute-prefix}-{$name}" select="." /> 
    </xsl:if>
   </xsl:for-each>
  </xsl:template>
@@ -108,7 +110,7 @@
  
  <xsl:template match="w:b | w:i | w:caps | w:smallCaps | w:strike" mode="direct-formatting" priority="2">
   <xsl:variable name="name" select="local-name()"/>
-  <xsl:variable name="attribute-name" select="if(string-length($name) eq 1) then map:get($style-names, $name) else $name"/>
+  <xsl:variable name="attribute-name" select="dcx:get-attribute-name($name)"/>
   <xsl:if test="xs:boolean(@w:val) or empty(@w:val)">
    <xsl:attribute name="{$attribute-name}" select="'true'" />   
   </xsl:if>
@@ -116,7 +118,7 @@
  
  <xsl:template match="w:vertAlign" mode="direct-formatting" priority="2" use-when="false()">
   <xsl:variable name="name" select="local-name()"/>
-  <xsl:variable name="attribute-name" select="if(string-length($name) eq 1) then map:get($style-names, $name) else $name"/>
+  <xsl:variable name="attribute-name" select="dcx:get-attribute-name($name)"/>
   <xsl:if test="@w:val != 'baseline'">
    <xsl:attribute name="{$attribute-name}" select="." />   
   </xsl:if>
@@ -207,12 +209,17 @@
   <xsl:value-of select="translate($name, ' ()', '-')"/>
  </xsl:function>
  
- <xsl:function name="dcx:has-default-value">
+ <xsl:function name="dcx:has-default-value" as="xs:boolean">
   <xsl:param name="element-name" as="xs:string" />
   <xsl:param name="attribute-name" as="xs:string" />
   <xsl:param name="value" as="xs:string" />
   <xsl:variable name="default-value" select="$default-values?($element-name)?($attribute-name)"/>
   <xsl:value-of select="$default-value = $value"/>
+ </xsl:function>
+ 
+ <xsl:function name="dcx:get-attribute-name" as="xs:string">
+  <xsl:param name="ooxml-element-name" as="xs:string" />
+  <xsl:value-of select="if(string-length($ooxml-element-name) eq 1) then map:get($style-names, $ooxml-element-name) else $ooxml-element-name"/>
  </xsl:function>
  
 </xsl:stylesheet>
