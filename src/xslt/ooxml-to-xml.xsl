@@ -20,11 +20,11 @@
  <xsl:param name="styles" as="document-node(element(w:styles))" />
  <xsl:param name="comments" as="document-node(element(w:comments))" />
  <xsl:param name="footnotes" as="document-node(element(w:footnotes))" />
-
+ 
  <xsl:param name="root-element" select="'body'" />
  <xsl:param name="footnote-element" select="'footnote'" />
  <xsl:param name="comment-element" select="'comment'" />
-
+ 
  <xsl:param name="default-paragraph-style" select="'Normální'" />
  <xsl:param name="default-character-style" select="'text'" />
  
@@ -33,7 +33,18 @@
   'i' : 'italic',
   'u' : 'underline'
   }"/>
-
+ 
+ <xsl:variable name="default-values" select="map {
+  'u' : map {
+   'val' : 'none',
+   'color' : '000000'
+  },
+   'vertAlign' : map {
+   'val' : 'baseline'
+   }
+  }"/>
+ 
+ 
  <xsl:key name="style" match="w:style" use="@w:styleId" />
  <xsl:key name="comment" match="w:comment" use="@w:id" />
  <xsl:key name="footnote" match="w:footnote" use="@w:id" />
@@ -44,7 +55,7 @@
  <xsl:output method="xml" indent="yes" />
  
  <xsl:template match="/">
-    <xsl:apply-templates select="/w:document/w:body" />
+  <xsl:apply-templates select="/w:document/w:body" />
  </xsl:template>
  
  <xsl:template match="w:body">
@@ -85,7 +96,11 @@
   <xsl:variable name="element-name" select="local-name()"/>
   <xsl:for-each select="@*">
    <xsl:variable name="name" select="local-name()"/>
-   <xsl:attribute name="{$element-name}-{$name}" select="." />
+   <xsl:variable name="has-default-value" select="dcx:has-default-value($element-name, $name, .)"/>
+   <xsl:variable name="attribute-prefix" select="dcx:get-attribute-name($element-name)"/>
+   <xsl:if test="not(dcx:has-default-value($element-name, $name, .))">
+    <xsl:attribute name="{$attribute-prefix}-{$name}" select="." /> 
+   </xsl:if>
   </xsl:for-each>
  </xsl:template>
  
@@ -93,11 +108,24 @@
  
  <xsl:template match="w:pPr/w:rPr/*" mode="direct-formatting" priority="3" />
  
- <xsl:template match="w:b | w:i | w:u | w:caps | w:smallCaps | w:strike | w:vertAlign" mode="direct-formatting" priority="2">
+ <xsl:template match="w:b | w:i | w:caps | w:smallCaps | w:strike" mode="direct-formatting" priority="2">
   <xsl:variable name="name" select="local-name()"/>
-  <xsl:variable name="attribute-name" select="if(string-length($name) eq 1) then map:get($style-names, $name) else $name"/>
-  <xsl:attribute name="{$attribute-name}" select="'true'" />
+  <xsl:variable name="attribute-name" select="dcx:get-attribute-name($name)"/>
+  <xsl:if test="xs:boolean(@w:val) or empty(@w:val)">
+   <xsl:attribute name="{$attribute-name}" select="'true'" />   
+  </xsl:if>
  </xsl:template>
+ 
+ <xsl:template match="w:vertAlign" mode="direct-formatting" priority="2" use-when="false()">
+  <xsl:variable name="name" select="local-name()"/>
+  <xsl:variable name="attribute-name" select="dcx:get-attribute-name($name)"/>
+  <xsl:if test="@w:val != 'baseline'">
+   <xsl:attribute name="{$attribute-name}" select="." />   
+  </xsl:if>
+ </xsl:template>
+ 
+ 
+ 
  
  <xsl:template match="w:footnoteReference">
   <xsl:variable name="number">
@@ -149,9 +177,49 @@
   <tab />
  </xsl:template>
  
+ <xsl:template match="w:tbl">
+  <xsl:variable name="n">
+   <xsl:number />
+  </xsl:variable>
+  <table n="{$n}">
+   <xsl:apply-templates />
+  </table>
+ </xsl:template>
+ 
+ <xsl:template match="w:tr">
+  <xsl:variable name="n">
+   <xsl:number />
+  </xsl:variable>
+  <row n="{$n}">
+   <xsl:apply-templates />
+  </row>
+ </xsl:template>
+ 
+ <xsl:template match="w:tc">
+  <xsl:variable name="n">
+   <xsl:number />
+  </xsl:variable>
+  <cell n="{$n}">
+   <xsl:apply-templates />
+  </cell>
+ </xsl:template>
+ 
  <xsl:function name="dcx:get-style-name">
   <xsl:param name="name" as="xs:string" />
   <xsl:value-of select="translate($name, ' ()', '-')"/>
+ </xsl:function>
+ 
+ <xsl:function name="dcx:has-default-value" as="xs:boolean">
+  <xsl:param name="element-name" as="xs:string" />
+  <xsl:param name="attribute-name" as="xs:string" />
+  <xsl:param name="value" as="xs:string" />
+  <xsl:variable name="default-value" select="$default-values?($element-name)?($attribute-name)"/>
+  <xsl:value-of select="$default-value = $value"/>
+ </xsl:function>
+ 
+ <xsl:function name="dcx:get-attribute-name" as="xs:string">
+  <xsl:param name="ooxml-element-name" as="xs:string" />
+  <xsl:value-of select="if(string-length($ooxml-element-name) eq 1) then map:get($style-names, $ooxml-element-name) else $ooxml-element-name"/>
  </xsl:function>
  
 </xsl:stylesheet>

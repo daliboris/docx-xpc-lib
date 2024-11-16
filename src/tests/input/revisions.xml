@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+ xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+ xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:oel="http://schemas.microsoft.com/office/2019/extlst"
+ xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+ xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+ xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+ xmlns:w16du="http://schemas.microsoft.com/office/word/2023/wordml/word16du" xmlns:w16sdtdh="http://schemas.microsoft.com/office/word/2020/wordml/sdtdatahash" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+ xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
+ mc:Ignorable="w14 w15 w16se w16cid w16 w16cex w16sdtdh w16du wp14">
+ <w:body>
+  <w:p w14:paraId="3D342FEA" w14:textId="7614FD11" w:rsidR="008D433D" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis1" />
+   </w:pPr>
+   <w:r>
+    <w:t>Accepting revisions</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="4F3991B7" w14:textId="05CF3254" w:rsidR="00145B73" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis2" />
+   </w:pPr>
+   <w:r>
+    <w:t>Characters</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="3EE18F9B" w14:textId="1EBE6496" w:rsidR="00145B73" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:t>Deleting</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="3BBC88D0" w14:textId="24DB451B" w:rsidR="00C3029E" w:rsidRPr="00C3029E" w:rsidRDefault="00C3029E" w:rsidP="00C3029E">
+   <w:r>
+    <w:t>Text to</w:t>
+   </w:r>
+   <w:del w:id="0" w:author="Boris Lehečka" w:date="2024-10-16T10:15:00Z" w16du:dateUtc="2024-10-16T08:15:00Z">
+    <w:r w:rsidDel="00D35381">
+     <w:delText xml:space="preserve"> </w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="1" w:author="Boris Lehečka" w:date="2024-10-16T10:13:00Z" w16du:dateUtc="2024-10-16T08:13:00Z">
+    <w:r w:rsidDel="00537E71">
+     <w:delText>delete</w:delText>
+    </w:r>
+   </w:del>
+   <w:del w:id="2" w:author="Boris Lehečka" w:date="2024-10-16T10:15:00Z" w16du:dateUtc="2024-10-16T08:15:00Z">
+    <w:r w:rsidDel="00D35381">
+     <w:delText>.</w:delText>
+    </w:r>
+   </w:del>
+  </w:p>
+  <w:p w14:paraId="4D1320F4" w14:textId="3DB81A8A" w:rsidR="00145B73" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:t>Adding</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="632B97D3" w14:textId="7DB3DB0A" w:rsidR="00C3029E" w:rsidRPr="00C3029E" w:rsidRDefault="00C3029E" w:rsidP="00C3029E">
+   <w:r>
+    <w:t>Text to</w:t>
+   </w:r>
+   <w:ins w:id="3" w:author="Boris Lehečka" w:date="2024-10-16T10:13:00Z" w16du:dateUtc="2024-10-16T08:13:00Z">
+    <w:r w:rsidR="00537E71">
+     <w:t xml:space="preserve"> add</w:t>
+    </w:r>
+   </w:ins>
+  </w:p>
+  <w:p w14:paraId="4ECE4710" w14:textId="270BAB41" w:rsidR="00E022BD" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:t>Character style change</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="03EECA84" w14:textId="2E9E04AF" w:rsidR="00C3029E" w:rsidRPr="00C3029E" w:rsidRDefault="00C3029E" w:rsidP="00C3029E">
+   <w:r>
+    <w:t xml:space="preserve">Text to </w:t>
+   </w:r>
+   <w:r w:rsidRPr="00537E71">
+    <w:rPr>
+     <w:rStyle w:val="Siln" />
+     <w:rPrChange w:id="4" w:author="Boris Lehečka" w:date="2024-10-16T10:14:00Z" w16du:dateUtc="2024-10-16T08:14:00Z">
+      <w:rPr />
+     </w:rPrChange>
+    </w:rPr>
+    <w:t>change</w:t>
+   </w:r>
+   <w:r>
+    <w:t>.</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="5334E48C" w14:textId="59F95F6A" w:rsidR="00145B73" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:t>Direct formatting change</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="7F6B959F" w14:textId="4EBA4BA0" w:rsidR="00C3029E" w:rsidRPr="00C3029E" w:rsidRDefault="00C3029E" w:rsidP="00C3029E">
+   <w:r>
+    <w:t xml:space="preserve">Text to change </w:t>
+   </w:r>
+   <w:r w:rsidRPr="00537E71">
+    <w:rPr>
+     <w:i />
+     <w:iCs />
+     <w:rPrChange w:id="5" w:author="Boris Lehečka" w:date="2024-10-16T10:14:00Z" w16du:dateUtc="2024-10-16T08:14:00Z">
+      <w:rPr />
+     </w:rPrChange>
+    </w:rPr>
+    <w:t>direct</w:t>
+   </w:r>
+   <w:r>
+    <w:t xml:space="preserve"> formatting.</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="749CE10E" w14:textId="5138340B" w:rsidR="00145B73" w:rsidRPr="00145B73" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis2" />
+   </w:pPr>
+   <w:r>
+    <w:t>Paragraphs</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="54F52AF2" w14:textId="4E1DD937" w:rsidR="000E3751" w:rsidRDefault="000E3751" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:t>Style changing</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="3F8FD9E2" w14:textId="67C35465" w:rsidR="000E3751" w:rsidRDefault="000E3751" w:rsidP="00A80ACD">
+   <w:pPr>
+    <w:pStyle w:val="Bezmezer" />
+    <w:pPrChange w:id="6" w:author="Boris Lehečka" w:date="2024-10-16T13:00:00Z" w16du:dateUtc="2024-10-16T11:00:00Z">
+     <w:pPr />
+    </w:pPrChange>
+   </w:pPr>
+   <w:r>
+    <w:t>Normal to Without spaces</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="76C22B3B" w14:textId="1512D999" w:rsidR="00C56219" w:rsidRDefault="00C56219">
+   <w:pPr>
+    <w:pStyle w:val="Bezmezer" />
+    <w:pPrChange w:id="7" w:author="Boris Lehečka" w:date="2024-10-16T12:55:00Z" w16du:dateUtc="2024-10-16T10:55:00Z">
+     <w:pPr />
+    </w:pPrChange>
+   </w:pPr>
+   <w:r>
+    <w:t>Subheadings to Without spaces</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="64D99A4A" w14:textId="77777777" w:rsidR="000E3751" w:rsidRPr="000E3751" w:rsidRDefault="000E3751" w:rsidP="000E3751" />
+  <w:p w14:paraId="6D69FC38" w14:textId="71FEBF13" w:rsidR="00145B73" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:t>Deleting</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="567D6B99" w14:textId="52EDCC04" w:rsidR="00145B73" w:rsidDel="00537E71" w:rsidRDefault="00C3029E" w:rsidP="00145B73">
+   <w:pPr>
+    <w:rPr>
+     <w:del w:id="8" w:author="Boris Lehečka" w:date="2024-10-16T10:14:00Z" w16du:dateUtc="2024-10-16T08:14:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:del w:id="9" w:author="Boris Lehečka" w:date="2024-10-16T10:14:00Z" w16du:dateUtc="2024-10-16T08:14:00Z">
+    <w:r w:rsidDel="00537E71">
+     <w:delText>Deleted</w:delText>
+    </w:r>
+    <w:r w:rsidR="00145B73" w:rsidDel="00537E71">
+     <w:delText xml:space="preserve"> </w:delText>
+    </w:r>
+    <w:r w:rsidDel="00537E71">
+     <w:delText>paragraph</w:delText>
+    </w:r>
+   </w:del>
+  </w:p>
+  <w:p w14:paraId="717F59C6" w14:textId="77777777" w:rsidR="00145B73" w:rsidRPr="00145B73" w:rsidRDefault="00145B73" w:rsidP="00145B73" />
+  <w:p w14:paraId="7C341D5C" w14:textId="01A2C060" w:rsidR="00145B73" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:t>Combining</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="3DCC3D47" w14:textId="3457FA01" w:rsidR="00145B73" w:rsidDel="00537E71" w:rsidRDefault="00C3029E" w:rsidP="00145B73">
+   <w:pPr>
+    <w:rPr>
+     <w:del w:id="10" w:author="Boris Lehečka" w:date="2024-10-16T10:14:00Z" w16du:dateUtc="2024-10-16T08:14:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:r>
+    <w:t>First</w:t>
+   </w:r>
+   <w:r w:rsidR="00145B73">
+    <w:t xml:space="preserve"> </w:t>
+   </w:r>
+   <w:r>
+    <w:t>paragraph</w:t>
+   </w:r>
+   <w:ins w:id="11" w:author="Boris Lehečka" w:date="2024-10-16T10:14:00Z" w16du:dateUtc="2024-10-16T08:14:00Z">
+    <w:r w:rsidR="00537E71">
+     <w:t xml:space="preserve"> </w:t>
+    </w:r>
+   </w:ins>
+  </w:p>
+  <w:p w14:paraId="1DEC85DA" w14:textId="6AFFC3BC" w:rsidR="00C3029E" w:rsidRDefault="00C3029E" w:rsidP="00537E71">
+   <w:r>
+    <w:t>Second paragraph</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="05CCF278" w14:textId="77777777" w:rsidR="00145B73" w:rsidRDefault="00145B73" w:rsidP="00145B73" />
+  <w:p w14:paraId="52C7CF79" w14:textId="3A3E6D62" w:rsidR="00145B73" w:rsidRDefault="00E022BD" w:rsidP="00145B73">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:t>Inserting</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="5F0EE431" w14:textId="77777777" w:rsidR="00C3029E" w:rsidRDefault="00C3029E" w:rsidP="00C3029E">
+   <w:pPr>
+    <w:rPr>
+     <w:ins w:id="12" w:author="Boris Lehečka" w:date="2024-10-16T10:15:00Z" w16du:dateUtc="2024-10-16T08:15:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:r>
+    <w:t>First paragraph</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="2C02BF1D" w14:textId="51747664" w:rsidR="00537E71" w:rsidRDefault="00537E71" w:rsidP="00C3029E">
+   <w:ins w:id="13" w:author="Boris Lehečka" w:date="2024-10-16T10:15:00Z" w16du:dateUtc="2024-10-16T08:15:00Z">
+    <w:r>
+     <w:t>Inserted paragraph</w:t>
+    </w:r>
+   </w:ins>
+  </w:p>
+  <w:p w14:paraId="59550843" w14:textId="77777777" w:rsidR="00C3029E" w:rsidRDefault="00C3029E" w:rsidP="00C3029E">
+   <w:r>
+    <w:t>Second paragraph</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="564558B0" w14:textId="77777777" w:rsidR="00145B73" w:rsidRDefault="00145B73" w:rsidP="00145B73" />
+  <w:p w14:paraId="6183BD1D" w14:textId="3590576A" w:rsidR="000C5BB0" w:rsidRDefault="000C5BB0" w:rsidP="000C5BB0">
+   <w:pPr>
+    <w:pStyle w:val="Nadpis3" />
+   </w:pPr>
+   <w:r>
+    <w:lastRenderedPageBreak />
+    <w:t>Moving</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="421602F9" w14:textId="77777777" w:rsidR="000C5BB0" w:rsidRDefault="000C5BB0" w:rsidP="000C5BB0">
+   <w:r>
+    <w:t>First paragraph</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="1EC53B50" w14:textId="77777777" w:rsidR="00537E71" w:rsidRPr="00145B73" w:rsidRDefault="00537E71" w:rsidP="00537E71">
+   <w:pPr>
+    <w:rPr>
+     <w:ins w:id="14" w:author="Boris Lehečka" w:date="2024-10-16T10:15:00Z" w16du:dateUtc="2024-10-16T08:15:00Z" />
+    </w:rPr>
+   </w:pPr>
+   <w:ins w:id="15" w:author="Boris Lehečka" w:date="2024-10-16T10:15:00Z" w16du:dateUtc="2024-10-16T08:15:00Z">
+    <w:r>
+     <w:t>Paragraph to be moved</w:t>
+    </w:r>
+   </w:ins>
+  </w:p>
+  <w:p w14:paraId="617CD7EE" w14:textId="77777777" w:rsidR="000C5BB0" w:rsidRDefault="000C5BB0" w:rsidP="000C5BB0">
+   <w:r>
+    <w:t>Second paragraph</w:t>
+   </w:r>
+  </w:p>
+  <w:p w14:paraId="667CEC57" w14:textId="05D05BE5" w:rsidR="000C5BB0" w:rsidRPr="00145B73" w:rsidRDefault="00627838" w:rsidP="00145B73">
+   <w:del w:id="16" w:author="Boris Lehečka" w:date="2024-10-16T10:15:00Z" w16du:dateUtc="2024-10-16T08:15:00Z">
+    <w:r w:rsidDel="00537E71">
+     <w:delText>Paragraph t</w:delText>
+    </w:r>
+    <w:r w:rsidR="000C5BB0" w:rsidDel="00537E71">
+     <w:delText>o be moved</w:delText>
+    </w:r>
+   </w:del>
+  </w:p>
+  <w:sectPr w:rsidR="000C5BB0" w:rsidRPr="00145B73">
+   <w:pgSz w:w="11906" w:h="16838" />
+   <w:pgMar w:top="1417" w:right="1417" w:bottom="1417" w:left="1417" w:header="708" w:footer="708" w:gutter="0" />
+   <w:cols w:space="708" />
+   <w:docGrid w:linePitch="360" />
+  </w:sectPr>
+ </w:body>
+</w:document>
