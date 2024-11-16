@@ -82,7 +82,7 @@
  </p:declare-step>
  
  <p:declare-step type="dxd:get-ooxml-content" version="3.0" name="getting-ooxml-content">
-  <p:option name="content" as="xs:string" values="('document', 'styles', 'footnotes', 'comments')" />
+  <p:option name="content" as="xs:string" values="('document', 'styles', 'footnotes', 'comments', 'hyperlinks')" />
   
   <p:input port="source" primary="true">
    <p:documentation>Source document, ie. DOCX file.</p:documentation>
@@ -92,7 +92,9 @@
    <p:documentation>Extracted document itself.</p:documentation>
   </p:output>
   
-  <p:unarchive include-filter="word/{$content}\.xml" name="content" />
+  <p:variable name="include-filter" select="if($content = 'hyperlinks') then 'document\.xml\.rels' else 'word/' || $content || '\.xml'" />
+  
+  <p:unarchive include-filter="{$include-filter}" name="content" />
   
   <p:count />
   
@@ -110,6 +112,13 @@
       <p:identity>
        <p:with-input port="source">
         <w:footnotes />
+       </p:with-input>
+      </p:identity>
+     </p:when>
+     <p:when test="$content = 'hyperlinks'">
+      <p:identity>
+       <p:with-input port="source">
+        <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships" />
        </p:with-input>
       </p:identity>
      </p:when>
@@ -496,6 +505,11 @@
   </p:if>
   <p:variable name="footnotes" select="/" />
   
+  <dxd:get-ooxml-content content="hyperlinks">
+   <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+  </dxd:get-ooxml-content>
+  <p:variable name="hyperlinks" select="/" />
+  
   <dxd:get-document>
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-document>
@@ -514,7 +528,8 @@
     'root' : 'body', 
     'styles' : $styles,
     'footnotes' : $footnotes,
-    'comments' : $comments
+    'comments' : $comments,
+    'hyperlinks' : $hyperlinks
     }" />
   </p:xslt>
   

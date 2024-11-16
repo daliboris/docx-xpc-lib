@@ -4,9 +4,11 @@
  xmlns:math="http://www.w3.org/2005/xpath-functions/math"
  xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+ xmlns:rel="http://schemas.openxmlformats.org/package/2006/relationships"
+ xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
  xmlns:dcx="https://www.daliboris.cz/ns/docx/xslt"
  xmlns:map="http://www.w3.org/2005/xpath-functions/map" 
- exclude-result-prefixes="xs math xd w dcx math map"
+ exclude-result-prefixes="xs math xd w dcx math map r rel"
  version="3.0">
  <xd:doc scope="stylesheet">
   <xd:desc>
@@ -20,6 +22,7 @@
  <xsl:param name="styles" as="document-node(element(w:styles))" />
  <xsl:param name="comments" as="document-node(element(w:comments))" />
  <xsl:param name="footnotes" as="document-node(element(w:footnotes))" />
+ <xsl:param name="hyperlinks" as="document-node(element(rel:Relationships))" />
  
  <xsl:param name="root-element" select="'body'" />
  <xsl:param name="footnote-element" select="'footnote'" />
@@ -48,6 +51,7 @@
  <xsl:key name="style" match="w:style" use="@w:styleId" />
  <xsl:key name="comment" match="w:comment" use="@w:id" />
  <xsl:key name="footnote" match="w:footnote" use="@w:id" />
+ <xsl:key name="hyperlink" match="rel:Relationship" use="@Id" />
  
  <xsl:strip-space elements="*"/>
  
@@ -70,7 +74,7 @@
    <xsl:if test="$keep-direct-formatting">
     <xsl:apply-templates select="w:pPr" mode="direct-formatting" />
    </xsl:if>
-   <xsl:apply-templates select="w:r | w:footnoteReference | w:commentRangeStart | w:commentRangeEnd" />
+   <xsl:apply-templates select="w:r | w:footnoteReference | w:commentRangeStart | w:commentRangeEnd | w:hyperlink" />
   </xsl:element>
   <xsl:apply-templates select="w:r/w:footnoteReference" mode="footnotes" />
   <xsl:apply-templates select="w:commentRangeEnd" mode="comments" />
@@ -202,6 +206,16 @@
   <cell n="{$n}">
    <xsl:apply-templates />
   </cell>
+ </xsl:template>
+ 
+ <xsl:template match="w:hyperlink">
+  <xsl:variable name="target" select="key('hyperlink', @r:id, $hyperlinks)"/>
+  <hyperlink target="{$target/@Target}">
+   <xsl:if test="@w:tgtFrame">
+    <xsl:attribute name="frame" select="@w:tgtFrame" />
+   </xsl:if>
+   <xsl:apply-templates />
+  </hyperlink>
  </xsl:template>
  
  <xsl:function name="dcx:get-style-name">
