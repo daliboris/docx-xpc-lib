@@ -11,7 +11,7 @@
 	 <p:output port="result" serialization="map{'indent' : true()}" />
 
   <p:for-each>
-  	<p:with-input select="('document', 'styles', 'footnotes', 'comments')"/>
+  	<p:with-input select="('document', 'styles', 'footnotes', 'comments', 'hyperlinks')"/>
   	<p:variable name="content" select="." />
 
   	<dxd:get-ooxml-content content="{$content}" p:message="Getting: {$content}">
