@@ -396,13 +396,21 @@
    <p:store href="{$temp-debug-path}/clean-runs/document-02-proofErrors.xml" /> 
   </p:if>
   
+  <p:xslt>
+   <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-smartTags.xsl" />
+  </p:xslt>
+
+  <p:if test="$debug">
+   <p:store href="{$temp-debug-path}/clean-runs/document-03-smartTags.xml" /> 
+  </p:if>
   
+
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-group-following-runs.xsl" />
   </p:xslt>
   
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-03-following-runs.xml" /> 
+   <p:store href="{$temp-debug-path}/clean-runs/document-04-following-runs.xml" /> 
   </p:if>
   
 
@@ -410,7 +418,7 @@
    <p:with-input port="stylesheet" href="../Xslt/ooxml-move-space-to-another-run.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-04-move-space.xml" /> 
+   <p:store href="{$temp-debug-path}/clean-runs/document-05-move-space.xml" /> 
   </p:if>
   
   
@@ -418,14 +426,14 @@
    <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-duplicated-run-styles.xsl" />
   </p:xslt>
   <p:if test="$debug">
-  <p:store href="{$temp-debug-path}/clean-runs/document-05-remove-duplicated.xml" />
+  <p:store href="{$temp-debug-path}/clean-runs/document-06-remove-duplicated.xml" />
   </p:if>
   
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-empty-run-styles.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-06-remove-empty.xml" />
+   <p:store href="{$temp-debug-path}/clean-runs/document-07-remove-empty.xml" />
   </p:if>
   
  </p:declare-step>
