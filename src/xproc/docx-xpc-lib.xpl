@@ -8,6 +8,7 @@
  xmlns:xhtml="http://www.w3.org/1999/xhtml"
  version="3.0">
   
+ <!-- STEP -->
  <p:declare-step type="dxd:get-document" version="3.0" name="getting-document">
   <p:documentation>Gets document.xml file in OOXML format from DOCX container.</p:documentation>
 
@@ -18,7 +19,15 @@
   <p:input port="source">
    <p:documentation>Source document, ie. DOCX file.</p:documentation>
   </p:input>
+  
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
 
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  
   <p:archive-manifest name="manifest">
    <p:with-input port="source" pipe="source@getting-document" />
   </p:archive-manifest>
@@ -29,11 +38,16 @@
    <p:with-input pipe="source@getting-document" />
   </p:unarchive>
   
+  <p:if test="$debug">
+   <p:store href="{$debug-path-uri}/document.xml" />
+  </p:if>
+  
   <!-- https://github.com/xproc/3.0-steps/issues/362 -->
 <!--  <p:split-sequence test="ends-with(p:document-property(., 'base-uri'), 'word/document.xml')" />-->
 
  </p:declare-step>
 
+ <!-- STEP -->
  <p:declare-step type="dxd:extract-text" version="3.0" name="content-extract-text">
   
   <p:output port="result" primary="true">
@@ -48,7 +62,14 @@
    <p:documentation>OOXML document, ie. document.xml from DOCX file.</p:documentation>
   </p:input>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
   <p:option name="href" as="xs:anyURI" />
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-extract-text.xsl" />   
@@ -58,6 +79,7 @@
   
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:get-styles" version="3.0" name="getting-styles">
   <p:documentation>Gets styles.xml file in OOXML format from DOCX container.</p:documentation>
   
@@ -68,6 +90,14 @@
   <p:input port="source" primary="true">
    <p:documentation>Source document, ie. DOCX file.</p:documentation>
   </p:input>
+  
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
   <!--<p:archive-manifest name="manifest">
    <p:with-input port="source" pipe="source@getting-styles" />
@@ -81,6 +111,7 @@
   
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:get-ooxml-content" version="3.0" name="getting-ooxml-content">
   <p:option name="content" as="xs:string" values="('document', 'styles', 'footnotes', 'comments', 'hyperlinks')" />
   
@@ -92,10 +123,19 @@
    <p:documentation>Extracted document itself.</p:documentation>
   </p:output>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  
   <p:variable name="include-filter" select="if($content = 'hyperlinks') then 'document\.xml\.rels' else 'word/' || $content || '\.xml'" />
   
   <p:unarchive include-filter="{$include-filter}" name="content" />
   
+ 
   <p:count />
   
   <p:choose>
@@ -138,8 +178,13 @@
    </p:otherwise>
   </p:choose>
   
+  <p:if test="$debug">
+   <p:store href="{$debug-path-uri}/{$content}/source.xml" />
+  </p:if>
+
  </p:declare-step>
 
+ <!-- STEP -->
  <p:declare-step type="dxd:replace-document-only" version="3.0" name="replacing-document-only">
   <p:documentation>Replaces document.xml file in OOXML format withing DOCX container.</p:documentation>
   
@@ -154,6 +199,14 @@
   <p:input port="document">
    <p:documentation>Source document, ie. document.xml file in OOXML format.</p:documentation>
   </p:input>
+  
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest" />
@@ -181,6 +234,7 @@
     
  </p:declare-step>
 
+ <!-- STEP -->
  <p:declare-step type="dxd:replace-document" version="3.0" name="document-replace">
   <p:documentation>Replaces document.xml file in OOXML format withing DOCX container.</p:documentation>
   
@@ -202,7 +256,15 @@
    <p:documentation>Source document, ie. document.xml file in OOXML format.</p:documentation>
   </p:input>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
   <p:option name="docx-href" as="xs:anyURI" required="true"  />
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
  
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -233,6 +295,7 @@
 
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:replace-styles" version="3.0" name="styles-replace">
   <p:documentation>Replaces document.xml file in OOXML format withing DOCX container.</p:documentation>
   
@@ -254,7 +317,15 @@
    <p:documentation>Source document with styles definition, ie. styles.xml file in OOXML format.</p:documentation>
   </p:input>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
   <p:option name="docx-href" as="xs:anyURI"  />
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -285,6 +356,7 @@
   
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:replace-content" version="3.0" name="content-replace">
   <p:documentation>Replaces document.xml and styles.xml files in OOXML format withing DOCX container.</p:documentation>
   
@@ -310,7 +382,15 @@
    <p:documentation>Source document with styles definition, ie. styles.xml file in OOXML format.</p:documentation>
   </p:input>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
   <p:option name="docx-href" as="xs:anyURI"  />
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
 
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -346,6 +426,7 @@
   
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:get-hyperlinks" version="3.0" name="getting-hyperlinks">
   <p:documentation>Gets list of hyperlinks used in DOCX document.</p:documentation>
   
@@ -356,6 +437,14 @@
   <p:input port="source">
    <p:documentation>Source document, ie. DOCX file.</p:documentation>
   </p:input>
+  
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
   
   <p:archive-manifest name="manifest">
@@ -372,9 +461,8 @@
   
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:clean-runs" version="3.0" name="cleaning-runs">
-  <p:option name="debug" select="false()" as="xs:boolean" />
-  <p:option name="temp-debug-path" select="'../temp/debug'" as="xs:string" />
   
   <p:output port="result" primary="true">
    <p:documentation>OOXML document with cleaned runs, i.e. merged following runs and moved space to previous run</p:documentation>
@@ -384,8 +472,17 @@
    <p:documentation>OOXML document, ie. document.xml from DOCX file.</p:documentation>
   </p:input>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  
+  
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-01.xml" />   
+   <p:store href="{$debug-path}/clean-runs/document-01.xml" />   
   </p:if>
   
   <p:xslt>
@@ -393,7 +490,7 @@
   </p:xslt>
   
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-02-proofErrors.xml" /> 
+   <p:store href="{$debug-path}/clean-runs/document-02-proofErrors.xml" /> 
   </p:if>
   
   <p:xslt>
@@ -401,7 +498,7 @@
   </p:xslt>
 
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-03-smartTags.xml" /> 
+   <p:store href="{$debug-path}/clean-runs/document-03-smartTags.xml" /> 
   </p:if>
   
 
@@ -410,7 +507,7 @@
   </p:xslt>
   
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-04-following-runs.xml" /> 
+   <p:store href="{$debug-path}/clean-runs/document-04-following-runs.xml" /> 
   </p:if>
   
 
@@ -418,7 +515,7 @@
    <p:with-input port="stylesheet" href="../Xslt/ooxml-move-space-to-another-run.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-05-move-space.xml" /> 
+   <p:store href="{$debug-path}/clean-runs/document-05-move-space.xml" /> 
   </p:if>
   
   
@@ -426,18 +523,19 @@
    <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-duplicated-run-styles.xsl" />
   </p:xslt>
   <p:if test="$debug">
-  <p:store href="{$temp-debug-path}/clean-runs/document-06-remove-duplicated.xml" />
+  <p:store href="{$debug-path}/clean-runs/document-06-remove-duplicated.xml" />
   </p:if>
   
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-empty-run-styles.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/clean-runs/document-07-remove-empty.xml" />
+   <p:store href="{$debug-path}/clean-runs/document-07-remove-empty.xml" />
   </p:if>
   
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:remove-protection" version="3.0" name="removing-protection">
   <p:documentation>Removes protection from the document.</p:documentation>
   
@@ -448,6 +546,14 @@
   <p:input port="source" primary="true">
    <p:documentation>Target document, ie. DOCX file which will be changed.</p:documentation>
   </p:input>
+  
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -473,16 +579,10 @@
   
  </p:declare-step>
 
+ <!-- STEP -->
  <p:declare-step type="dxd:docx-to-xml" version="3.0" name="conversion-ooxml-to-xml">
-  <p:option name="clean-markup" as="xs:boolean" select="false()" />
-  <p:option name="keep-direct-formatting" as="xs:boolean" select="false()" />
-  <p:option name="debug" select="false()" as="xs:boolean" />
-  <p:option name="temp-debug-path" select="'../temp/debug'" as="xs:string" />
-  
-  <p:output port="result" primary="true">
-   <p:documentation>OOXML document with cleaned runs, i.e. merged following runs and moved space to previous run</p:documentation>
-  </p:output>
-  
+
+  <!-- INPUT PORTS -->
   <p:input port="source" primary="true">
    <p:documentation>Source document, ie. DOCX file.</p:documentation>
   </p:input>
@@ -492,41 +592,81 @@
    <p:empty />
   </p:input>
   
-  <dxd:get-styles>
-   <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
-  </dxd:get-styles>
-  <p:variable name="styles" select="/" />
+  <!-- OUTPUT PORTS -->
+  <p:output port="result" primary="true">
+   <p:documentation>OOXML document with cleaned runs, i.e. merged following runs and moved space to previous run</p:documentation>
+  </p:output>
   
-  <dxd:get-ooxml-content content="comments">
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
+  <p:option name="clean-markup" as="xs:boolean" select="false()" />
+  <p:option name="keep-direct-formatting" as="xs:boolean" select="false()" />
+  
+  <!--<p:option name="debug" select="false()" as="xs:boolean" />
+  <p:option name="debug-path" select="'../temp/debug'" as="xs:string" />-->
+  
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  
+  <p:variable name="content-debug-path" select="if(empty($debug-path)) then () else $debug-path || '/docx-to-xml/content'" />
+  
+  <p:variable name="file-stem" select="tokenize(tokenize(resolve-uri(base-uri(/), $base-uri), '/')[last()], '\.')[position() lt last()] => string-join('.')" />
+  
+  <!-- PIPELINE BODY -->
+  <p:group use-when="false()">
+   <p:variable name="styles" select="/">
+    <dxd:get-styles debug-path="{$debug-path}" base-uri="{$base-uri}" />
+   </p:variable>
+   
+   <p:variable name="comments" select="/">
+    <dxd:get-ooxml-content content="comments" debug-path="{$content-debug-path}" base-uri="{$base-uri}" />
+    <p:if test="$clean-markup">
+     <dxd:clean-runs debug-path="{$content-debug-path}" base-uri="{$base-uri}" />   
+    </p:if>
+   </p:variable>   
+  </p:group>
+  
+<!--  <p:group use-when="true()">-->
+  <dxd:get-styles debug-path="{$content-debug-path}" base-uri="{$base-uri}">
+    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+   </dxd:get-styles>
+   <p:variable name="styles" select="/" />
+   
+  <dxd:get-ooxml-content content="comments" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
+    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+   </dxd:get-ooxml-content>
+   <p:if test="$clean-markup">
+    <dxd:clean-runs debug-path="{$content-debug-path}" base-uri="{$base-uri}" />   
+   </p:if>
+   <p:variable name="comments" select="/" />   
+  <!--</p:group>-->
+  
+  <dxd:get-ooxml-content content="footnotes" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-ooxml-content>
   <p:if test="$clean-markup">
-   <dxd:clean-runs debug="{$debug}" temp-debug-path="{$temp-debug-path}" />   
-  </p:if>
-  <p:variable name="comments" select="/" />
-  
-  <dxd:get-ooxml-content content="footnotes">
-   <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
-  </dxd:get-ooxml-content>
-  <p:if test="$clean-markup">
-   <dxd:clean-runs debug="{$debug}" temp-debug-path="{$temp-debug-path}" />   
+   <dxd:clean-runs debug-path="{$content-debug-path}" base-uri="{$base-uri}" />   
   </p:if>
   <p:variable name="footnotes" select="/" />
   
-  <dxd:get-ooxml-content content="hyperlinks">
+  <dxd:get-ooxml-content content="hyperlinks" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-ooxml-content>
   <p:variable name="hyperlinks" select="/" />
   
-  <dxd:get-document>
+  <dxd:get-document debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-document>
   <p:if test="$clean-markup">
-   <dxd:clean-runs debug="{$debug}" temp-debug-path="{$temp-debug-path}" />   
+   <dxd:clean-runs debug-path="{$content-debug-path}" base-uri="{$base-uri}" />   
   </p:if>
   
   <p:if test="$debug">
-   <p:store href="{$temp-debug-path}/docx-to-xml/document-after-clean-runs.xml" />
+   <p:store href="{$debug-path-uri}/docx-to-xml/001-docx-to-xml.xml" />
   </p:if>
   
   <p:xslt>
@@ -541,8 +681,13 @@
     }" />
   </p:xslt>
   
+  <p:if test="$debug">
+   <p:store href="{$debug-path-uri}/docx-to-xml/002-docx-to-xml.xml" />
+  </p:if>
+  
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:process-revisions-docx" version="3.0" name="processing-revisions-docx" visibility="private">
   
   <p:documentation>
@@ -561,24 +706,34 @@
    <p:documentation>DOCX document with processed revisions, i.e. inserted, moved deleted and formatted spans or paragraphs. Revisions will be acctepted or rejected.</p:documentation>
   </p:output>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
   <p:option name="operation" as="xs:string" select="'accept'" values="('accept', 'reject')" required="false">
    <p:documentation>How to process existing revisions: accept or reject them</p:documentation>
   </p:option>
+
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
-  <dxd:get-ooxml-content content="document">
+
+  <dxd:get-ooxml-content content="document" debug-path="{$debug-path}" base-uri="{$base-uri}" >
    <p:with-input port="source" pipe="source@processing-revisions-docx" />
   </dxd:get-ooxml-content>
   
-  <dxd:process-revisions-ooxml operation="{$operation}" />
+  <dxd:process-revisions-ooxml operation="{$operation}" debug-path="{$debug-path}" base-uri="{$base-uri}" />
   <p:identity name="revisions" />
   
-  <dxd:replace-document-only>
+  <dxd:replace-document-only debug-path="{$debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@processing-revisions-docx" />
    <p:with-input port="document" pipe="result@revisions" />
   </dxd:replace-document-only>
   
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:process-revisions-ooxml" version="3.0" name="processing-revisions-ooxml" visibility="private">
   
   <p:documentation>
@@ -596,9 +751,19 @@
    <p:documentation>OOXML document with processed revisions, i.e. inserted, moved deleted and formatted spans or paragraphs. Revisions will be acctepted or rejected.</p:documentation>
   </p:output>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
   <p:option name="operation" as="xs:string" select="'accept'" values="('accept', 'reject')">
    <p:documentation>How to process existing revisions: accept or reject them</p:documentation>
   </p:option>
+  
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  
   
   <p:xslt>
    <p:with-input port="stylesheet" href="../xslt/ooxml-revisions-process.xsl" />
@@ -607,6 +772,7 @@
   
  </p:declare-step>
  
+ <!-- STEP -->
  <p:declare-step type="dxd:process-revisions" version="3.0" name="processing-revisions" visibility="public">
   
   <p:documentation>For inspiration see https://github.com/OpenXmlDev/Open-Xml-PowerTools/blob/vNext/OpenXmlPowerTools/RevisionProcessor.cs and https://github.com/ARLM-Keller/UOF-EF-to-Open-XML-Translator/blob/master/UofTranslatorLib/resources/word/oox2uof/revisions.xsl.</p:documentation>
@@ -623,13 +789,21 @@
    <p:documentation>Source document, ie. DOCX file.</p:documentation>
   </p:input>
   
+  <!-- OPTIONS -->
+  <p:option name="debug-path" as="xs:anyURI?" select="()" />
+  <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+  
+  <!-- VARIABLES -->
+  <p:variable name="debug" select="$debug-path || '' ne ''" />
+  <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  
   <p:variable name="content-type" select="p:document-property(., 'content-type')"/>
   <p:choose>
    <p:when test="$content-type eq 'application/xml'">
-    <dxd:process-revisions-ooxml operation="{$operation}" />
+    <dxd:process-revisions-ooxml operation="{$operation}" debug-path="{$debug-path}" base-uri="{$base-uri}" />
    </p:when>
    <p:when test="$content-type eq 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">    
-    <dxd:process-revisions-docx operation="{$operation}" />
+    <dxd:process-revisions-docx operation="{$operation}" debug-path="{$debug-path}" base-uri="{$base-uri}" />
    </p:when>
    <p:otherwise>
     <p:identity>
