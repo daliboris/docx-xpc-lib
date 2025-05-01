@@ -23,6 +23,10 @@
    
 	<!-- OUTPUT PORTS -->
 	<p:output port="result" primary="true" />
+	
+	<!-- OPTIONS -->
+	<p:option name="debug-path" as="xs:anyURI?" select="'../_debug/table'" />
+	<p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
 
 	<p:declare-step type="dxt:get-ooxml-content" name="get-ooxml-content">
 
@@ -32,11 +36,15 @@
 		<!-- OUTPUT PORTS -->
 		<p:output port="result" primary="true" />
 		
+		<!-- OPTIONS -->
+		<p:option name="debug-path" as="xs:anyURI?" select="()" />
+		<p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+		
 		<p:for-each>
 			<p:with-input select="('document', 'styles', 'footnotes', 'comments')"/>
 			<p:variable name="content" select="." />
 			
-			<dxd:get-ooxml-content content="{$content}" p:message="Getting: {$content}">
+			<dxd:get-ooxml-content content="{$content}" p:message="Getting: {$content}" debug-path="{$debug-path}" base-uri="{$base-uri}">
 				<p:with-input port="source" pipe="source@get-ooxml-content" />
 			</dxd:get-ooxml-content>
 			
@@ -60,7 +68,11 @@
 		<!-- OUTPUT PORTS -->
 		<p:output port="result" primary="true" />
 		
-		<dxd:docx-to-xml clean-markup="true" keep-direct-formatting="true" />
+		<!-- OPTIONS -->
+		<p:option name="debug-path" as="xs:anyURI?" select="()" />
+		<p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
+		
+		<dxd:docx-to-xml clean-markup="true" keep-direct-formatting="true" debug-path="{$debug-path}" base-uri="{$base-uri}" />
 		<p:store href="../output/table/docx-to-xml.xml" serialization="map{'indent' : true()}" />
 		<p:identity>
 			<p:with-input pipe="result-uri"/>
@@ -69,8 +81,8 @@
 	
 	<!-- PIPELINE BODY -->
 
-	<dxt:get-ooxml-content />
-	<dxt:docx-to-xml>
+	 <dxt:get-ooxml-content debug-path="{$debug-path}" base-uri="{$base-uri}"/>
+	 <dxt:docx-to-xml debug-path="{$debug-path}" base-uri="{$base-uri}">
 		<p:with-input port="source" pipe="source@test" />
 	</dxt:docx-to-xml>
 

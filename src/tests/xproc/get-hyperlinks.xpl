@@ -10,8 +10,12 @@
  
 
  <p:output port="result" serialization="map{'indent' : true()}" sequence="true" />
+ 
+ <!-- OPTIONS -->
+ <p:option name="debug-path" as="xs:anyURI?" select="'../_debug/hyperlinks'" />
+ <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
 	
- <dxd:get-hyperlinks />
+ <dxd:get-hyperlinks debug-path="{$debug-path}" base-uri="{$base-uri}" />
  
  <p:wrap-sequence wrapper="rel:Relationships" />
  <p:store href="../output/hyperlinks.xml" />

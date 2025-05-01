@@ -26,7 +26,7 @@
 	<p:output port="result" primary="true" sequence="true" />
 	
 	<!-- OPTIONS -->
-	<p:option name="debug-path" select="()" as="xs:string?" />
+	<p:option name="debug-path" select="'../_debug'" as="xs:string?" />
 	<p:option name="base-uri" as="xs:anyURI" select="static-base-uri()"/>
 	
 	<!-- VARIABLES -->
@@ -38,7 +38,7 @@
 	<p:for-each>
 		<p:variable name="full-path" select="p:document-property(., 'base-uri')" />
 		<p:variable name="name" select="tokenize($full-path, '/')[last()]" />
-		<dxd:process-revisions operation="accept" p:message="Processing {$name}" />
+		<dxd:process-revisions operation="accept" p:message="Processing {$name}" debug-path="{$debug-path}" base-uri="{$base-uri}"/>
 		<p:store href="../output/{$name}" message="Storing to ../output/{$name}" />
 		<p:identity>
 			<p:with-input pipe="result-uri" />

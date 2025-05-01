@@ -10,11 +10,15 @@
 
 	<p:output port="result" serialization="map{'indent' : true()}" />
 	
-	<dxd:docx-to-xml clean-markup="true" keep-direct-formatting="true"  debug="true"/>
+	<!-- OPTIONS -->
+	<p:option name="debug-path" as="xs:anyURI?" select="'../_debug/tabs'" />
+	<p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
 	
-	<p:store href="../output/tabs-clean-markup-keep-dirext-formatting.xml" />
+	<dxd:docx-to-xml clean-markup="true" keep-direct-formatting="true"  debug-path="{$debug-path}" base-uri="{$base-uri}"/>
+	
+	<p:store href="../output/tabs-clean-markup-keep-dirext-formatting.xml" name="clean-keep" />
 
-	<dxd:docx-to-xml clean-markup="false" keep-direct-formatting="false" debug="true">
+	<dxd:docx-to-xml clean-markup="false" keep-direct-formatting="false" debug-path="{$debug-path}" base-uri="{$base-uri}">
 		<p:with-input port="source" pipe="source@docx-to-xml" />
 	</dxd:docx-to-xml>
 	<p:store href="../output/tabs.xml" />
