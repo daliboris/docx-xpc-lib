@@ -70,12 +70,13 @@
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
   <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  <p:variable name="href-uri" select="resolve-uri($href, $base-uri)" />
   
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-extract-text.xsl" />   
   </p:xslt>
   
-  <p:store href="{$href}" name="storing" message="Storing text to {p:urify($href)}" />
+  <p:store href="{$href-uri}" name="storing" message="Storing text to {$href-uri}" />
   
  </p:declare-step>
  
@@ -265,6 +266,8 @@
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
   <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  
+  <p:variable name="docx-href-uri" select="resolve-uri($docx-href, $base-uri)" />
  
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -291,7 +294,7 @@
    <p:with-input port="manifest" pipe="result@manifest" />
   </p:archive>
   
-   <p:store href="{resolve-uri($docx-href, static-base-uri())}" name="storing" message="Storing: {$docx-href} :: {resolve-uri($docx-href, static-base-uri())}" /> 
+  <p:store href="{$docx-href-uri}" name="storing" message="Storing: {$docx-href} :: {$docx-href-uri}" /> 
 
  </p:declare-step>
  
@@ -327,6 +330,8 @@
   <p:variable name="debug" select="$debug-path || '' ne ''" />
   <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
+  <p:variable name="docx-href-uri" select="resolve-uri($docx-href, $base-uri)" />
+  
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
    <p:with-input port="source" pipe="source@styles-replace" />
@@ -352,7 +357,7 @@
    <p:with-input port="manifest" pipe="result@manifest" />
   </p:archive>
   
-  <p:store href="{p:urify($docx-href)}" name="storing" message="Storing {$docx-href}" />   
+  <p:store href="{$docx-href-uri}" name="storing" message="Storing {$docx-href} ::: {$docx-href-uri}" />
   
  </p:declare-step>
  
@@ -391,6 +396,8 @@
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
   <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
+  
+  <p:variable name="docx-href-uri" select="resolve-uri($docx-href, $base-uri)" />
 
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -422,7 +429,7 @@
    <p:with-input port="manifest" pipe="result@manifest" />
   </p:archive>
   
-  <p:store href="{p:urify($docx-href)}" name="storing" message="Storing {$docx-href}" />
+  <p:store href="{$docx-href-uri}" name="storing" message="Storing {$docx-href} ::: {$docx-href-uri}" />
   
  </p:declare-step>
  
@@ -482,7 +489,7 @@
   
   
   <p:if test="$debug">
-   <p:store href="{$debug-path}/clean-runs/document-01.xml" />   
+   <p:store href="{$debug-path-uri}/clean-runs/document-01.xml" />   
   </p:if>
   
   <p:xslt>
@@ -490,7 +497,7 @@
   </p:xslt>
   
   <p:if test="$debug">
-   <p:store href="{$debug-path}/clean-runs/document-02-proofErrors.xml" /> 
+   <p:store href="{$debug-path-uri}/clean-runs/document-02-proofErrors.xml" /> 
   </p:if>
   
   <p:xslt>
@@ -498,7 +505,7 @@
   </p:xslt>
 
   <p:if test="$debug">
-   <p:store href="{$debug-path}/clean-runs/document-03-smartTags.xml" /> 
+   <p:store href="{$debug-path-uri}/clean-runs/document-03-smartTags.xml" /> 
   </p:if>
   
 
@@ -507,7 +514,7 @@
   </p:xslt>
   
   <p:if test="$debug">
-   <p:store href="{$debug-path}/clean-runs/document-04-following-runs.xml" /> 
+   <p:store href="{$debug-path-uri}/clean-runs/document-04-following-runs.xml" /> 
   </p:if>
   
 
@@ -515,7 +522,7 @@
    <p:with-input port="stylesheet" href="../Xslt/ooxml-move-space-to-another-run.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$debug-path}/clean-runs/document-05-move-space.xml" /> 
+   <p:store href="{$debug-path-uri}/clean-runs/document-05-move-space.xml" /> 
   </p:if>
   
   
@@ -523,14 +530,14 @@
    <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-duplicated-run-styles.xsl" />
   </p:xslt>
   <p:if test="$debug">
-  <p:store href="{$debug-path}/clean-runs/document-06-remove-duplicated.xml" />
+   <p:store href="{$debug-path-uri}/clean-runs/document-06-remove-duplicated.xml" />
   </p:if>
   
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-empty-run-styles.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$debug-path}/clean-runs/document-07-remove-empty.xml" />
+   <p:store href="{$debug-path-uri}/clean-runs/document-07-remove-empty.xml" />
   </p:if>
   
  </p:declare-step>
@@ -613,6 +620,7 @@
   <p:variable name="debug-path-uri" select="resolve-uri($debug-path, $base-uri)" />
   
   <p:variable name="content-debug-path" select="if(empty($debug-path)) then () else $debug-path || '/docx-to-xml/content'" />
+  <p:variable name="content-debug-path-uri" select="resolve-uri($content-debug-path, $base-uri)" />
   
   <p:variable name="file-stem" select="tokenize(tokenize(resolve-uri(base-uri(/), $base-uri), '/')[last()], '\.')[position() lt last()] => string-join('.')" />
   
