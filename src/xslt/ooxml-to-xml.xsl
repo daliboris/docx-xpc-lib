@@ -97,8 +97,8 @@
   <xsl:for-each select="@*">
    <xsl:variable name="name" select="local-name()"/>
    <xsl:variable name="has-default-value" select="dcx:has-default-value($element-name, $name, .)"/>
-   <xsl:variable name="attribute-prefix" select="dcx:get-attribute-name($element-name)"/>
-   <xsl:if test="not(dcx:has-default-value($element-name, $name, .))">
+   <xsl:if test="not($has-default-value)">
+    <xsl:variable name="attribute-prefix" select="dcx:get-attribute-name($element-name)"/>
     <xsl:attribute name="{$attribute-prefix}-{$name}" select="." /> 
    </xsl:if>
   </xsl:for-each>
@@ -108,7 +108,7 @@
  
  <xsl:template match="w:pPr/w:rPr/*" mode="direct-formatting" priority="3" />
  
- <xsl:template match="w:b | w:i | w:caps | w:smallCaps | w:strike" mode="direct-formatting" priority="2">
+ <xsl:template match="w:b | w:i | w:caps | w:smallCaps | w:strike | w:rtl" mode="direct-formatting" priority="2">
   <xsl:variable name="name" select="local-name()"/>
   <xsl:variable name="attribute-name" select="dcx:get-attribute-name($name)"/>
   <xsl:if test="xs:boolean(@w:val) or empty(@w:val)">
