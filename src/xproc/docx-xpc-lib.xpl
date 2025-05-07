@@ -110,6 +110,10 @@
    <p:with-input pipe="source@getting-styles" />
   </p:unarchive>
   
+  <p:if test="$debug">
+   <p:store href="{$debug-path-uri}/styles/source.xml" />
+  </p:if>
+  
  </p:declare-step>
  
  <!-- STEP -->
@@ -633,22 +637,25 @@
    <p:variable name="comments" select="/">
     <dxd:get-ooxml-content content="comments" debug-path="{$content-debug-path}" base-uri="{$base-uri}" />
     <p:if test="$clean-markup">
-     <dxd:clean-runs debug-path="{$content-debug-path}" base-uri="{$base-uri}" />   
+     <dxd:clean-runs debug-path="{$content-debug-path}/comments" base-uri="{$base-uri}" />   
     </p:if>
    </p:variable>   
   </p:group>
   
 <!--  <p:group use-when="true()">-->
-  <dxd:get-styles debug-path="{$content-debug-path}" base-uri="{$base-uri}">
+  <!--<dxd:get-styles debug-path="{$content-debug-path}" base-uri="{$base-uri}">
     <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
-   </dxd:get-styles>
+   </dxd:get-styles>-->
+  <dxd:get-ooxml-content content="styles" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
+   <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+  </dxd:get-ooxml-content>
    <p:variable name="styles" select="/" />
    
   <dxd:get-ooxml-content content="comments" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
     <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
    </dxd:get-ooxml-content>
    <p:if test="$clean-markup">
-    <dxd:clean-runs debug-path="{$content-debug-path}" base-uri="{$base-uri}" />   
+    <dxd:clean-runs debug-path="{$content-debug-path}/comments" base-uri="{$base-uri}" />   
    </p:if>
    <p:variable name="comments" select="/" />   
   <!--</p:group>-->
@@ -657,7 +664,7 @@
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-ooxml-content>
   <p:if test="$clean-markup">
-   <dxd:clean-runs debug-path="{$content-debug-path}" base-uri="{$base-uri}" />   
+   <dxd:clean-runs debug-path="{$content-debug-path}/footnotes" base-uri="{$base-uri}" />   
   </p:if>
   <p:variable name="footnotes" select="/" />
   
@@ -670,7 +677,7 @@
    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
   </dxd:get-document>
   <p:if test="$clean-markup">
-   <dxd:clean-runs debug-path="{$content-debug-path}" base-uri="{$base-uri}" />   
+   <dxd:clean-runs debug-path="{$content-debug-path}/document" base-uri="{$base-uri}" />   
   </p:if>
   
   <p:if test="$debug">
