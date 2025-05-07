@@ -17,6 +17,6 @@
  
  <xsl:mode on-no-match="shallow-copy"/>
  
- <xsl:template match="w:proofErr" />
+ <xsl:template match="w:proofErr | w:noProof" />
  
 </xsl:stylesheet>
