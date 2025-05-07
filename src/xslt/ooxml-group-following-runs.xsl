@@ -29,7 +29,13 @@
       else if(self::w:r[w:rPr][w:tab][not(w:t)]) 
       then -10000
       else if(self::w:r[w:rPr][w:footnoteReference][not(w:t)]) 
-       then 0 
+       then position() (: TODO :) 
+       else if(self::w:r[w:rPr][w:footnoteRef][not(w:t)]) 
+       then position() (: TODO :)
+       (:
+       else if(self::w:r[w:rPr]) 
+       then -100 - sum(string-to-codepoints(self::w:r/w:rPr/w:rStyle/@w:val))
+       :)
        else if(self::w:r[w:rPr[w:b | w:i | w:u | w:caps | w:smallCaps | w:strike | w:vertAlign]]) 
        then 0 
       else if(self::w:r[not(w:rPr)][not(w:tab)]) 
@@ -66,7 +72,7 @@
       <xsl:when test="current-grouping-key() lt 0">
        <xsl:variable name="text" select="string-join(current-group()/w:t/text())"/>
        <w:r>
-        <xsl:copy-of select="current-group()/w:rPr[1]"/>
+        <xsl:copy-of select="(current-group()/w:rPr)[1]"/>
         <xsl:copy-of select="w:tab" />
         <xsl:if test="$text != ''">
          <w:t>
