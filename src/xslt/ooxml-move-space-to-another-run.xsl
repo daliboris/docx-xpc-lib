@@ -19,7 +19,7 @@
  <xsl:output method="xml" indent="yes" />
  <xsl:mode on-no-match="shallow-copy"/>
  
- <xsl:template match="w:t[starts-with(., ' ')]">
+ <xsl:template match="w:t[starts-with(., ' ')][parent::w:r/preceding-sibling::*[1][self::w:r[w:t]]]">
   <xsl:copy>
    <xsl:copy-of select="@* except @xml:space" />
    <xsl:if test="ends-with(., ' ')">
@@ -29,7 +29,15 @@
   </xsl:copy>
  </xsl:template>
  
- <xsl:template match="w:r[following-sibling::w:r[1]/w:t[starts-with(., ' ')]]/w:t" priority="2">
+ <xsl:template match="w:r[following-sibling::w:r[1]/w:t[starts-with(., ' ')]]/w:t" priority="2" use-when="false()">
+  <xsl:copy>
+   <xsl:copy-of select="@*" />
+   <xsl:attribute name="space" select="'preserve'" namespace="http://www.w3.org/XML/1998/namespace" />
+   <xsl:value-of select="concat(., ' ')"/>
+  </xsl:copy>
+ </xsl:template>
+ 
+ <xsl:template match="w:r[following-sibling::*[1][self::w:r/w:t[starts-with(., ' ')]]]/w:t" priority="2">
   <xsl:copy>
    <xsl:copy-of select="@*" />
    <xsl:attribute name="space" select="'preserve'" namespace="http://www.w3.org/XML/1998/namespace" />
