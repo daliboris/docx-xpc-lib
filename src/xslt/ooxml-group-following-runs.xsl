@@ -36,7 +36,7 @@
        else if(self::w:r[w:rPr]) 
        then -100 - sum(string-to-codepoints(self::w:r/w:rPr/w:rStyle/@w:val))
        :)
-       else if(self::w:r[w:rPr[w:b | w:i | w:u | w:caps | w:smallCaps | w:strike | w:vertAlign]]) 
+       else if(self::w:r[w:rPr[w:b | w:i | w:u | w:caps | w:smallCaps | w:strike | w:vertAlign | w:highlight]]) 
        then 0 
       else if(self::w:r[not(w:rPr)][not(w:tab)]) 
        (: then -1 :)
