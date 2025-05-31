@@ -14,23 +14,28 @@
 	<p:option name="debug-path" as="xs:anyURI?" select="()" />
 	<p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
 	
-	<dxd:docx-to-xml clean-markup="true" keep-direct-formatting="true"/>
+	<dxd:docx-to-xml clean-markup="true" keep-direct-formatting="true" debug-path="../_debug" base-uri="{$base-uri}" />
 	
-	<p:store href="../output/docx-to-xml-clean-markup-keep-direct-formatting.xml" name="clean-and-keep" />
+	<p:store href="../output/docx-to-xml/clean-markup-keep-direct-formatting.xml" name="clean-and-keep" />
+	
+	<dxd:docx-to-xml clean-markup="false" keep-direct-formatting="true" >
+		<p:with-input port="source" pipe="source@docx-to-xml" />
+	</dxd:docx-to-xml>
+	<p:store href="../output/docx-to-xml/docx-to-xml-keep-direct-formatting.xml" name="remove"/>
 
 	<dxd:docx-to-xml clean-markup="false" keep-direct-formatting="false" >
 		<p:with-input port="source" pipe="source@docx-to-xml" />
 	</dxd:docx-to-xml>
-	<p:store href="../output/docx-to-xml.xml" name="dirty-and-remove"/>
+	<p:store href="../output/docx-to-xml/docx-to-xml.xml" name="dirty-and-remove"/>
 
-	<dxd:docx-to-xml clean-markup="false" keep-direct-formatting="false" debug-path="../_debug" base-uri="{$base-uri}"  >
+	<dxd:docx-to-xml clean-markup="false" keep-direct-formatting="false" >
 		<p:with-input port="source" pipe="source@docx-to-xml" />
 	</dxd:docx-to-xml>
-	<p:store href="../output/docx-to-xml-debug.xml" name="dirty-and-remove-debug"/>
+	<p:store href="../output/docx-to-xml/docx-to-xml-debug.xml" name="dirty-and-remove-debug"/>
 	
 
 	<p:identity>
-		<p:with-input pipe="result-uri@clean-and-keep result-uri@dirty-and-remove result-uri@dirty-and-remove-debug"/>
+		<p:with-input pipe="result-uri@clean-and-keep result-uri@remove result-uri@dirty-and-remove result-uri@dirty-and-remove-debug"/>
 	</p:identity>
 	
 
