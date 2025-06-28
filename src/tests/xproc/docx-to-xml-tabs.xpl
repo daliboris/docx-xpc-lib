@@ -16,7 +16,7 @@
 	
 	<dxd:docx-to-xml clean-markup="true" keep-direct-formatting="true"  debug-path="{$debug-path}" base-uri="{$base-uri}"/>
 	
-	<p:store href="../output/tabs-clean-markup-keep-dirext-formatting.xml" name="clean-keep" />
+	<p:store href="../output/tabs-clean-markup-keep-direct-formatting.xml" name="clean-keep" />
 
 	<dxd:docx-to-xml clean-markup="false" keep-direct-formatting="false" debug-path="{$debug-path}" base-uri="{$base-uri}">
 		<p:with-input port="source" pipe="source@docx-to-xml" />
