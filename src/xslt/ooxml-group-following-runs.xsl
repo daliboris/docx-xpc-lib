@@ -20,83 +20,29 @@
  
  <xsl:param name="default-style" select="'text'" />
  
- <xsl:template match="w:p">
+ <xsl:template match="w:p" use-when="true()">
   <xsl:copy>
-   <xsl:copy-of select="@*" />
-    <xsl:for-each-group select="*"  group-adjacent="
-      if(self::w:r[not(w:rPr)][w:tab]) 
-       then -10000 
-      else if(self::w:r[w:rPr][w:tab][not(w:t)]) 
-      then -10000
-      else if(self::w:r[w:rPr][w:footnoteReference][not(w:t)]) 
-       then position() (: TODO :) 
-       else if(self::w:r[w:rPr][w:footnoteRef][not(w:t)]) 
-       then position() (: TODO :)
-       (:
-       else if(self::w:r[w:rPr]) 
-       then -100 - sum(string-to-codepoints(self::w:r/w:rPr/w:rStyle/@w:val))
-       :)
-       else if(self::w:r[w:rPr[w:b | w:i | w:u | w:caps | w:smallCaps | w:strike | w:vertAlign | w:highlight]]) 
-       then 0 
-      else if(self::w:r[not(w:rPr)][not(w:tab)]) 
-       (: then -1 :)
-       then -100 - sum(string-to-codepoints($default-style))
-      else if(self::w:r[w:rPr]) 
-      then -100 - sum(string-to-codepoints(self::w:r/w:rPr/w:rStyle/@w:val)) 
-      else 
-       position()">
-     <xsl:choose>
-      <xsl:when test="current-grouping-key() eq 0">
-       <w:r>
-        <xsl:copy-of select="(current-group()/w:rPr)[1]" />
-        <xsl:copy-of select="current-group()/(* except (w:rPr, w:t, w:tab))" />
-        
-        <xsl:choose>
-         <xsl:when test="current-group()[w:tab]">
-          <xsl:copy-of select="current-group()/(w:t | w:tab)" />
-         </xsl:when>
-         <xsl:otherwise>
-          <xsl:variable name="text" select="string-join(current-group()/w:t)"/>
-          <xsl:if test="$text != ''">
-           <w:t>
-            <xsl:if test="normalize-space($text) != $text">
-             <xsl:attribute name="space" namespace="http://www.w3.org/XML/1998/namespace" select="'preserve'" />
-            </xsl:if>
-            <xsl:value-of select="$text"/>
-           </w:t>         
-          </xsl:if>
-         </xsl:otherwise>
-        </xsl:choose>
-       </w:r>
-      </xsl:when>
-      <xsl:when test="current-grouping-key() lt 0">
-       <xsl:variable name="text" select="string-join(current-group()/w:t/text())"/>
-       <w:r>
-        <xsl:copy-of select="(current-group()/w:rPr)[1]"/>
-        <xsl:copy-of select="w:tab" />
-        <xsl:if test="$text != ''">
-         <w:t>
-          <xsl:call-template name="add-xml-space">
-           <xsl:with-param name="text" select="$text" />
-          </xsl:call-template>
-          <xsl:value-of select="$text"/>
-         </w:t>
-        </xsl:if>
-       </w:r>
-      </xsl:when>
-      <xsl:otherwise>
-       <xsl:copy-of select="current-group()" />
-      </xsl:otherwise>
-     </xsl:choose>
-    </xsl:for-each-group>
+   <xsl:apply-templates select="@*"/>
+   <xsl:copy-of select="w:pPr" /> <!-- * except w:r ??? -->
+   
+   <!-- Combine <w:r> with identical <w:rPr> -->
+   <xsl:for-each-group select="w:r"
+    group-adjacent="serialize(w:rPr)">
+    
+    <xsl:variable name="first" select="current-group()[1]"/>
+    
+    <w:r>
+     <!-- Keep first occurence of w:rPr -->
+     <xsl:copy-of select="$first/w:rPr"/>
+     
+     <!-- Combine content of all items in the group except for w:rPr -->
+     <xsl:for-each select="current-group()">
+      <xsl:copy-of select="*[not(self::w:rPr)]"/>
+     </xsl:for-each>
+    </w:r>
+   </xsl:for-each-group>
   </xsl:copy>
- 
  </xsl:template>
- <xsl:template name="add-xml-space">
-  <xsl:param name="text" as="xs:string"/>
-  <xsl:if test="ends-with( $text, ' ') or starts-with( $text, ' ')">
-   <xsl:attribute name="space" select="'preserve'" namespace="http://www.w3.org/XML/1998/namespace" />
-  </xsl:if>
- </xsl:template>
+
  
 </xsl:stylesheet>

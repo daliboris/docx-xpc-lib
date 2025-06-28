@@ -521,12 +521,20 @@
    <p:store href="{$debug-path-uri}/clean-runs/document-04-following-runs.xml" /> 
   </p:if>
   
-
+  <p:xslt>
+   <p:with-input port="stylesheet" href="../Xslt/ooxml-group-following-texts.xsl" />
+  </p:xslt>
+  
+  <p:if test="$debug">
+   <p:store href="{$debug-path-uri}/clean-runs/document-05-following-texts.xml" /> 
+  </p:if>
+  
+  
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-move-space-to-another-run.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$debug-path-uri}/clean-runs/document-05-move-space.xml" /> 
+   <p:store href="{$debug-path-uri}/clean-runs/document-06-move-space.xml" /> 
   </p:if>
   
   
