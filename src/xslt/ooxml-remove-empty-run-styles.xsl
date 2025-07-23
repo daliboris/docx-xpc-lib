@@ -17,7 +17,11 @@
  <xsl:output method="xml" indent="yes" />
  <xsl:mode on-no-match="shallow-copy"/>
  
- <xsl:template match="w:r[w:t[not(text())]]" />
+ <xsl:template match="w:r[w:t[not(text())]]">
+  <xsl:if test="exists(w:t[text()])">
+   <xsl:copy-of select="." />
+  </xsl:if>
+ </xsl:template>
  
  
 </xsl:stylesheet>
