@@ -81,7 +81,7 @@
 	
 	<!-- PIPELINE BODY -->
 
-	 <dxt:get-ooxml-content debug-path="{$debug-path}" base-uri="{$base-uri}"/>
+	 <dxt:get-ooxml-content debug-path="{$debug-path}" base-uri="{$base-uri}" p:use-when="false()"/>
 	 <dxt:docx-to-xml debug-path="{$debug-path}" base-uri="{$base-uri}">
 		<p:with-input port="source" pipe="source@test" />
 	</dxt:docx-to-xml>
