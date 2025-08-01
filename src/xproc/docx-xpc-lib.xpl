@@ -599,7 +599,7 @@
  </p:declare-step>
 
  <!-- STEP -->
- <p:declare-step type="dxd:docx-to-xml" version="3.0" name="conversion-ooxml-to-xml">
+ <p:declare-step type="dxd:docx-to-xml" version="3.0" name="docx-to-xml">
 
   <!-- INPUT PORTS -->
   <p:input port="source" primary="true">
@@ -630,7 +630,7 @@
   <p:variable name="file-stem" select="tokenize(tokenize(resolve-uri(base-uri(/), $base-uri), '/')[last()], '\.')[position() lt last()] => string-join('.')" />
   
   <p:variable name="content-debug-path" select="if(empty($debug-path)) then () else p:urify($debug-path) || '/' || $file-stem || '/docx-to-xml/content'" />
-  <p:variable name="content-debug-path-uri" select="resolve-uri(p:urify($content-debug-path), $base-uri)" />
+  <p:variable name="content-debug-path-uri" select="if(empty($content-debug-path)) then () else p:urify($content-debug-path, $base-uri)" />
   
   
   <!-- PIPELINE BODY -->
@@ -649,15 +649,15 @@
   
 <!--  <p:group use-when="true()">-->
   <!--<dxd:get-styles debug-path="{$content-debug-path}" base-uri="{$base-uri}">
-    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+    <p:with-input port="source" pipe="source@docx-to-xml" />
    </dxd:get-styles>-->
   <dxd:get-ooxml-content content="styles" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
-   <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+   <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-ooxml-content>
    <p:variable name="styles" select="/" />
    
   <dxd:get-ooxml-content content="comments" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
-    <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+   <p:with-input port="source" pipe="source@docx-to-xml" />
    </dxd:get-ooxml-content>
    <p:if test="$clean-markup">
     <dxd:clean-runs debug-path="{$content-debug-path}/comments" base-uri="{$base-uri}" />   
@@ -666,7 +666,7 @@
   <!--</p:group>-->
   
   <dxd:get-ooxml-content content="footnotes" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
-   <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+   <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-ooxml-content>
   <p:if test="$clean-markup">
    <dxd:clean-runs debug-path="{$content-debug-path}/footnotes" base-uri="{$base-uri}" />   
@@ -674,12 +674,12 @@
   <p:variable name="footnotes" select="/" />
   
   <dxd:get-ooxml-content content="hyperlinks" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
-   <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+   <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-ooxml-content>
   <p:variable name="hyperlinks" select="/" />
   
   <dxd:get-document debug-path="{$content-debug-path}" base-uri="{$base-uri}">
-   <p:with-input port="source" pipe="source@conversion-ooxml-to-xml" />
+   <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-document>
   <p:if test="$clean-markup">
    <dxd:clean-runs debug-path="{$content-debug-path}/document" base-uri="{$base-uri}" />   
