@@ -20,7 +20,7 @@
  
  <xsl:param name="default-style" select="'text'" />
  
- <xsl:template match="w:p" use-when="true()">
+ <xsl:template match="w:p" use-when="false()">
   <xsl:copy>
    <xsl:apply-templates select="@*"/>
    <xsl:copy-of select="w:pPr" /> <!-- * except w:r ??? -->
@@ -42,6 +42,45 @@
     </w:r>
    </xsl:for-each-group>
   </xsl:copy>
+ </xsl:template>
+
+ <xsl:template match="w:r" use-when="true()">
+  <xsl:variable name="prev" select="serialize(preceding-sibling::w:r[1]/w:rPr)"/>
+  <xsl:variable name="current" select="serialize(w:rPr)"/>
+  <xsl:variable name="next" select="serialize(following-sibling::w:r[1]/w:rPr)"/>
+  <xsl:choose>
+   <!-- skip, it's proceeded in merge mode -->
+   <xsl:when test="$current = $prev" />
+   <!-- create parent element and process child elements from following -->
+   <xsl:when test="$current = $next">
+    <xsl:copy>
+     <xsl:copy-of select="@*" /> 
+     <xsl:apply-templates  />
+     <xsl:apply-templates select="following-sibling::w:r[1]" mode="merge" />
+    </xsl:copy>
+   </xsl:when>
+   <!-- copy while element -->
+   <xsl:otherwise>
+     <xsl:copy-of select="." />
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template>
+
+ <xsl:template match="w:r" mode="merge">
+  <xsl:variable name="current" select="serialize(w:rPr)"/>
+  <xsl:variable name="next" select="serialize(following-sibling::w:r[1]/w:rPr)"/>
+  
+  <xsl:choose>
+   <xsl:when test="$current = $next">
+     <xsl:apply-templates select="* except w:rPr" />
+     <xsl:apply-templates select="following-sibling::w:r[1]" mode="merge" />
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:apply-templates select="* except w:rPr" />
+   </xsl:otherwise>
+  </xsl:choose>
+  
+  
  </xsl:template>
 
  
