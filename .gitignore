@@ -1,4 +1,5 @@
 /src/tests/output/**
 /src/tests/_debug/**
-# ignore local help files
+
+# ignore local files
 *.local.*

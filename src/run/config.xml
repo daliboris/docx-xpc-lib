@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<morgana-config xmlns="http://www.xml-project.com/morganaxproc">
+  <xslt-connector>saxon12-3</xslt-connector>
+  <xquery-connector>saxon12-3</xquery-connector>
+  <mediatype-mapping>
+    <map file-extension="rels" media-type="application/xml" />
+  </mediatype-mapping>
+</morgana-config>

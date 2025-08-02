@@ -81,9 +81,11 @@
 	
 	<!-- PIPELINE BODY -->
 
-	 <dxt:get-ooxml-content debug-path="{$debug-path}" base-uri="{$base-uri}"/>
-	 <dxt:docx-to-xml debug-path="{$debug-path}" base-uri="{$base-uri}">
-		<p:with-input port="source" pipe="source@test" />
-	</dxt:docx-to-xml>
+	<dxd:docx-to-xml 
+		clean-markup="true" keep-direct-formatting="true" 
+		debug-path="{$debug-path}" base-uri="{$base-uri}" 
+	/>
+	
+	<p:store href="../output/table/docx-to-xml.xml" />
 
 </p:declare-step>
