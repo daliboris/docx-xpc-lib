@@ -18,8 +18,6 @@
  <xsl:output method="xml" indent="yes" />
  <xsl:mode on-no-match="shallow-copy"/>
  
- <xsl:param name="default-style" select="'text'" />
-
  <xsl:template match="w:r">
   <xsl:variable name="position" as="xs:integer">
    <xsl:number />
@@ -28,16 +26,14 @@
   <xsl:variable name="next" select="following-sibling::*[1]" />
   
   <xsl:variable name="prev-rend" select="if($prev[self::w:r]) then serialize($prev/w:rPr) else ()"/>
-  <xsl:variable name="current-rend" select="serialize(w:rPr)"/>
+  <xsl:variable name="current-rend" select="serialize(w:rPr)" as="xs:string"/>
   <xsl:variable name="next-rend" select="if($next[self::w:r]) then serialize($next/w:rPr) else ()"/>
   <xsl:choose>
    <xsl:when test="$position eq 1">
     <xsl:copy>
      <xsl:copy-of select="@*" /> 
      <xsl:apply-templates  />
-     <xsl:apply-templates select="following-sibling::*[1]" mode="merge">
-      <xsl:with-param name="prev-rend" select="$current-rend" tunnel="yes" />
-     </xsl:apply-templates>
+     <xsl:apply-templates select="following-sibling::*[1]" mode="merge" />
     </xsl:copy>    
    </xsl:when>
    <!-- skip, it's proceeded in merge mode -->
@@ -47,9 +43,7 @@
     <xsl:copy>
      <xsl:copy-of select="@*" /> 
      <xsl:apply-templates  />
-     <xsl:apply-templates select="following-sibling::*[1]" mode="merge">
-      <xsl:with-param name="prev-rend" select="$current-rend" tunnel="yes" />
-     </xsl:apply-templates>
+     <xsl:apply-templates select="following-sibling::*[1]" mode="merge" />
     </xsl:copy>
    </xsl:when>
    <!-- copy while element -->
@@ -60,18 +54,22 @@
  </xsl:template>
 
  <xsl:template match="w:r" mode="merge">
-  <xsl:param name="prev-rend" tunnel="yes" required="yes" />
   
+  <xsl:variable name="prev" select="preceding-sibling::*[1]" />
   <xsl:variable name="next" select="following-sibling::*[1]" />
-  
+
+  <xsl:variable name="prev-rend" select="if($prev[self::w:r]) then serialize($prev/w:rPr) else ()"/>
   <xsl:variable name="current-rend" select="serialize(w:rPr)"/>
   <xsl:variable name="next-rend" select="if($next[self::w:r]) then serialize($next/w:rPr) else ()"/>
 
+ <xsl:if test="$prev-rend = $current-rend">
   <xsl:apply-templates select="* except w:rPr" />
   
   <xsl:if test="$current-rend = $next-rend">
    <xsl:apply-templates select="following-sibling::*[1]" mode="merge" />
-  </xsl:if>
+  </xsl:if>  
+ </xsl:if>
+
   
  </xsl:template>
 
