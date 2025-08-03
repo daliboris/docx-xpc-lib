@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description 
+  xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+  stylesheet="../../xslt/ooxml-group-following-runs.xsl"
+  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+  xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <x:scenario>
+    <x:label>Combine runs</x:label>
+    <x:context>
+      <w:p>
+        <w:pPr>
+          <w:pStyle w:val="Vyznamrimske" />
+        </w:pPr>
+        <w:r>
+          <w:rPr>
+            <w:rStyle w:val="delimitatorvyznamu" />
+          </w:rPr>
+          <w:t xml:space="preserve">I. </w:t>
+        </w:r>
+        <w:r>
+          <w:t>citoslovce</w:t>
+        </w:r>
+      </w:p>      
+    </x:context>
+    <x:expect label="w:t elements are not merged">
+      <w:p>
+        <w:pPr>
+          <w:pStyle w:val="Vyznamrimske" />
+        </w:pPr>
+        <w:r>
+          <w:rPr>
+            <w:rStyle w:val="delimitatorvyznamu" />
+          </w:rPr>
+          <w:t xml:space="preserve">I. </w:t>
+        </w:r>
+        <w:r>
+          <w:t>citoslovce</w:t>
+        </w:r>
+      </w:p>      
+    </x:expect>
+  </x:scenario>
+  <x:scenario>
+    <x:label>Combine runs, keep inner elements</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+            <w:sz w:val="24" />
+            <w:szCs w:val="24" />
+          </w:rPr>
+          <w:t>betwe</w:t>
+        </w:r>
+        <w:r w:rsidR="009B445D">
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+            <w:sz w:val="24" />
+            <w:szCs w:val="24" />
+          </w:rPr>
+          <w:t>e</w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+            <w:sz w:val="24" />
+            <w:szCs w:val="24" />
+          </w:rPr>
+          <w:t>n</w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+            <w:sz w:val="24" />
+            <w:szCs w:val="24" />
+          </w:rPr>
+          <w:tab />
+          <w:t>text</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t elements are merged, w:tab is keeped">
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+            <w:sz w:val="24" />
+            <w:szCs w:val="24" />
+          </w:rPr>
+          <w:t>betwe</w:t>
+          <w:t>e</w:t>
+          <w:t>n</w:t>
+          <w:tab />
+          <w:t>text</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario>
+    <x:label>Combine runs</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">In </w:t>
+        </w:r>
+        <w:r>
+          <w:t>main</w:t>
+        </w:r>
+        <w:r>
+          <w:t xml:space="preserve"> </w:t>
+        </w:r>
+        <w:hyperlink r:id="rId8" w:history="1">
+          <w:r>
+            <w:rPr>
+              <w:rStyle w:val="Hypertextovodkaz" />
+            </w:rPr>
+            <w:t>https://lindat.cz/translation</w:t>
+          </w:r>
+        </w:hyperlink>
+        <w:r>
+          <w:t>text:</w:t>
+        </w:r>
+        <w:r>
+          <w:t xml:space="preserve"> </w:t>
+        </w:r>
+      </w:p>      
+    </x:context>
+    <x:expect label="w:t elements are merged">
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">In </w:t>
+          <w:t>main</w:t>
+          <w:t xml:space="preserve"> </w:t>
+        </w:r>
+        <w:hyperlink r:id="rId8" w:history="1">
+          <w:r>
+            <w:rPr>
+              <w:rStyle w:val="Hypertextovodkaz" />
+            </w:rPr>
+            <w:t>https://lindat.cz/translation</w:t>
+          </w:r>
+        </w:hyperlink>
+        <w:r>
+          <w:t>text:</w:t>
+          <w:t xml:space="preserve"> </w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario>
+    <x:label>Combine runs, separate different formatting, keep inner elements</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+          </w:rPr>
+          <w:t>betwe</w:t>
+        </w:r>
+        <w:r w:rsidR="009B445D">
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+            <w:sz w:val="24" />
+            <w:szCs w:val="24" />
+          </w:rPr>
+          <w:t>e</w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+            <w:sz w:val="24" />
+            <w:szCs w:val="24" />
+          </w:rPr>
+          <w:t>n</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t with different formatting are not merged, w:tab is keeped">
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+          </w:rPr>
+          <w:t>betwe</w:t>
+        </w:r>
+        <w:r w:rsidR="009B445D">
+          <w:rPr>
+            <w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman" />
+            <w:sz w:val="24" />
+            <w:szCs w:val="24" />
+          </w:rPr>
+          <w:t>e</w:t>
+          <w:t>n</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario>
+    <x:label>Combine runs, first empty formatting</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t with different formatting are not merged, w:tab is keeped">
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">middle </w:t>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario>
+    <x:label>Combine runs, middle empty formatting</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:r>
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t with different formatting are not merged, w:tab is keeped">
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:r>
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario>
+    <x:label>Combine runs, last empty formatting</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+        <w:r>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t with different formatting are not merged, w:tab is keeped">
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">start </w:t>
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+        <w:r>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+</x:description>
