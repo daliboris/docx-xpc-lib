@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+  stylesheet="../../xslt/ooxml-group-following-texts.xsl"
+  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+  xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  
+  <x:scenario>
+    <x:label>Combine texts within one run only</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">middle </w:t>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t within separate w:r should not be combined">
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t>middle end</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario>
+    <x:label>Combine adjanced texts only, keep other elements</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">start </w:t>
+          <w:tab />
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t with w:tab in between should not be combined">
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">start </w:t>
+          <w:tab />
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario>
+    <x:label>Combine adjanced texts, use xml:space</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:t>start/</w:t>
+          <w:t>middle/</w:t>
+          <w:t xml:space="preserve">end </w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t starting or endind with space should have xml:space attribute">
+      <w:p>
+        <w:r>
+          <w:t xml:space="preserve">start/middle/end </w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario>
+    <x:label>Combine adjanced texts, don't use xml:space</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:t>start</w:t>
+          <w:t xml:space="preserve"> middle </w:t>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:t not starting and endind with space should not have xml:space attribute">
+      <w:p>
+        <w:r>
+          <w:t>start middle end</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+</x:description>
