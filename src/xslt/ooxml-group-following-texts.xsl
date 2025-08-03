@@ -65,7 +65,7 @@
  <xsl:template match="w:r[count(w:t) gt 1]" use-when="true()">
   <xsl:copy>
    <xsl:apply-templates select="@*"/>
-   <xsl:copy-of select="w:rPr" />
+<!--   <xsl:copy-of select="w:rPr" />-->
    
    <!-- Sloučit <w:r> se stejným <w:rPr> -->
    <xsl:for-each-group select="*" group-adjacent="if(self::w:t) then 0 else position()">
