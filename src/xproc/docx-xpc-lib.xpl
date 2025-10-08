@@ -512,13 +512,20 @@
    <p:store href="{$debug-path-uri}/clean-runs/document-03-smartTags.xml" /> 
   </p:if>
   
+  <p:xslt>
+   <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-view-bookmarks.xsl" />
+  </p:xslt>
+  
+  <p:if test="$debug">
+   <p:store href="{$debug-path-uri}/clean-runs/document-04-remove-view-bookmarks.xml" /> 
+  </p:if>
 
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-group-following-runs.xsl" />
   </p:xslt>
   
   <p:if test="$debug">
-   <p:store href="{$debug-path-uri}/clean-runs/document-04-following-runs.xml" /> 
+   <p:store href="{$debug-path-uri}/clean-runs/document-05-following-runs.xml" /> 
   </p:if>
   
   <p:xslt>
@@ -526,7 +533,7 @@
   </p:xslt>
   
   <p:if test="$debug">
-   <p:store href="{$debug-path-uri}/clean-runs/document-05-following-texts.xml" /> 
+   <p:store href="{$debug-path-uri}/clean-runs/document-06-following-texts.xml" /> 
   </p:if>
   
   
@@ -534,7 +541,7 @@
    <p:with-input port="stylesheet" href="../Xslt/ooxml-move-space-to-another-run.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$debug-path-uri}/clean-runs/document-06-move-space.xml" /> 
+   <p:store href="{$debug-path-uri}/clean-runs/document-07-move-space.xml" /> 
   </p:if>
   
   
@@ -542,14 +549,14 @@
    <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-duplicated-run-styles.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$debug-path-uri}/clean-runs/document-06-remove-duplicated.xml" />
+   <p:store href="{$debug-path-uri}/clean-runs/document-08-remove-duplicated.xml" />
   </p:if>
   
   <p:xslt>
    <p:with-input port="stylesheet" href="../Xslt/ooxml-remove-empty-run-styles.xsl" />
   </p:xslt>
   <p:if test="$debug">
-   <p:store href="{$debug-path-uri}/clean-runs/document-07-remove-empty.xml" />
+   <p:store href="{$debug-path-uri}/clean-runs/document-09-remove-empty.xml" />
   </p:if>
   
  </p:declare-step>
