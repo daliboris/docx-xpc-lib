@@ -3,3 +3,8 @@
 
 # ignore local files
 *.local.*
+
+# ignore generated xspec files
+/src/tests/xspec/xspec/**
+/src/tests/xspec/*-report.html
+/src/tests/xspec/*-result.html
