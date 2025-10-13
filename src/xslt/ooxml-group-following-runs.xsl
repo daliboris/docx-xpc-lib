@@ -18,7 +18,39 @@
  <xsl:output method="xml" indent="yes" />
  <xsl:mode on-no-match="shallow-copy"/>
  
- <xsl:template match="w:r">
+ <!-- WIP -->
+ <xsl:template match="w:p" use-when="true()">
+  <xsl:copy>
+   <xsl:apply-templates select="@*"/>
+   <!-- Combine <w:r> with identical <w:rPr> -->
+   <xsl:for-each-group select="*"
+    group-adjacent="local-name()">
+    <xsl:choose>
+     <xsl:when test="current-group()[self::w:r]">
+      <xsl:for-each-group select="current-group()" group-adjacent="serialize(w:rPr)">
+       <xsl:variable name="first" select="current-group()[1]"/>
+       <w:r>
+        <!-- Keep attributes of first w:r -->
+        <xsl:copy-of select="$first/@*"/>
+        <!-- Keep first occurence of w:rPr -->
+        <xsl:copy-of select="$first/w:rPr"/>
+        
+        <!-- Combine content of all items in the group except for w:rPr -->
+        <xsl:for-each select="current-group()">
+         <xsl:copy-of select="*[not(self::w:rPr)]"/>
+        </xsl:for-each>
+       </w:r>
+      </xsl:for-each-group>
+     </xsl:when>
+     <xsl:otherwise>
+      <xsl:copy-of select="current-group()" />
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:for-each-group>
+  </xsl:copy>
+ </xsl:template>
+ 
+ <xsl:template match="w:r" use-when="false()">
   <xsl:variable name="position" as="xs:integer">
    <xsl:number />
   </xsl:variable>
@@ -53,7 +85,7 @@
   </xsl:choose>
  </xsl:template>
 
- <xsl:template match="w:r" mode="merge">
+ <xsl:template match="w:r" mode="merge" use-when="false()">
   
   <xsl:variable name="prev" select="preceding-sibling::*[1]" />
   <xsl:variable name="next" select="following-sibling::*[1]" />
