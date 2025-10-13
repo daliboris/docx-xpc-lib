@@ -18,7 +18,7 @@
  <xsl:output method="xml" indent="yes" />
  <xsl:mode on-no-match="shallow-copy"/>
  
- <!-- WIP -->
+
  <xsl:template match="w:p" use-when="true()">
   <xsl:copy>
    <xsl:apply-templates select="@*"/>
