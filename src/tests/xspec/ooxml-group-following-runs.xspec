@@ -313,4 +313,93 @@
     </x:expect>
   </x:scenario>
   
+  <x:scenario>
+    <x:label>Combine runs, last empty elements inbetween runs</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:commentRangeStart w:id="1" />
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+        <w:r>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:r with same formatting are not merged, w:commentRangeStart is keeped">
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:commentRangeStart w:id="1" />
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+        <w:r>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario>
+    <x:label>Combine runs, last empty elements inbetween runs</x:label>
+    <x:context>
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:commentRangeStart w:id="1" />
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">middle </w:t>
+        </w:r>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:context>
+    <x:expect label="w:r sepeatated by w:commentRangeStart with same formatting are not merged, w:commentRangeStart is keeped">
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">start </w:t>
+        </w:r>
+        <w:commentRangeStart w:id="1" />
+        <w:r>
+          <w:rPr>
+            <w:b />
+          </w:rPr>
+          <w:t xml:space="preserve">middle </w:t>
+          <w:t>end</w:t>
+        </w:r>
+      </w:p>
+    </x:expect>
+  </x:scenario>
+  
 </x:description>
