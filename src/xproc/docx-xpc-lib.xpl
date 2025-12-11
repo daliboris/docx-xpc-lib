@@ -26,7 +26,7 @@
 
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <p:archive-manifest name="manifest">
    <p:with-input port="source" pipe="source@getting-document" />
@@ -69,7 +69,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   <p:variable name="href-uri" select="resolve-uri($href, $base-uri)" />
   
   <p:xslt>
@@ -98,7 +98,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <!--<p:archive-manifest name="manifest">
    <p:with-input port="source" pipe="source@getting-styles" />
@@ -134,7 +134,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <p:variable name="include-filter" select="if($content = 'hyperlinks') then 'document\.xml\.rels' else 'word/' || $content || '\.xml'" />
   
@@ -211,7 +211,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest" />
@@ -269,7 +269,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <p:variable name="docx-href-uri" select="resolve-uri($docx-href, $base-uri)" />
  
@@ -332,7 +332,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <p:variable name="docx-href-uri" select="resolve-uri($docx-href, $base-uri)" />
   
@@ -399,7 +399,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <p:variable name="docx-href-uri" select="resolve-uri($docx-href, $base-uri)" />
 
@@ -455,7 +455,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   
   <p:archive-manifest name="manifest">
@@ -489,7 +489,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   
   <p:if test="$debug">
@@ -579,7 +579,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -629,14 +629,15 @@
   
   <p:option name="clean-markup" as="xs:boolean" select="false()" />
   <p:option name="keep-direct-formatting" as="xs:boolean" select="false()" />
+  <p:option name="revisions" as="xs:string?" select="'accept'" values="('accept', 'reject', 'keep')" />
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
 
   <p:variable name="file-stem" select="tokenize(tokenize(resolve-uri(base-uri(/), $base-uri), '/')[last()], '\.')[position() lt last()] => string-join('.')" />
   
-  <p:variable name="content-debug-path" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri) || '/' || $file-stem || '/docx-to-xml/content'" />
+  <p:variable name="content-debug-path" select="if($debug) then p:urify($debug-path, $base-uri) else () || '/' || $file-stem || '/docx-to-xml/content'" />
   <p:variable name="content-debug-path-uri" select="if(empty($content-debug-path)) then () else p:urify($content-debug-path, $base-uri)" />
   
   <!-- PIPELINE BODY -->
@@ -674,6 +675,9 @@
   <dxd:get-ooxml-content content="footnotes" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-ooxml-content>
+  <p:if test="$revisions != ('keep')">
+   <dxd:process-revisions operation="{$revisions}" />
+  </p:if>
   <p:if test="$clean-markup">
    <dxd:clean-runs debug-path="{$content-debug-path}/footnotes" base-uri="{$base-uri}" />   
   </p:if>
@@ -687,6 +691,9 @@
   <dxd:get-document debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-document>
+  <p:if test="$revisions != ('keep')">
+   <dxd:process-revisions operation="{$revisions}" />
+  </p:if>
   <p:if test="$clean-markup">
    <dxd:clean-runs debug-path="{$content-debug-path}/document" base-uri="{$base-uri}" />   
   </p:if>
@@ -742,7 +749,7 @@
 
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
 
   <dxd:get-ooxml-content content="document" debug-path="{$debug-path}" base-uri="{$base-uri}" >
@@ -788,7 +795,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   
   <p:xslt>
@@ -821,7 +828,7 @@
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
-  <p:variable name="debug-path-uri" select="if(empty($debug-path)) then () else p:urify($debug-path, $base-uri)" />
+  <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
   <p:variable name="content-type" select="p:document-property(., 'content-type')"/>
   <p:choose>
