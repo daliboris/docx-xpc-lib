@@ -87,9 +87,11 @@
    <xsl:if test="$keep-direct-formatting">
     <xsl:apply-templates select="w:rPr" mode="direct-formatting" />
    </xsl:if>
-   <xsl:apply-templates select="w:t | w:tab | w:footnoteReference | w:commentRangeStart | w:commentRangeEnd" />
+   <xsl:apply-templates select="w:t | w:tab | w:br | w:footnoteReference | w:commentRangeStart | w:commentRangeEnd" />
   </xsl:element>
  </xsl:template>
+ 
+ 
  
  <xsl:template match="w:t">
   <!--<xsl:copy-of select="@xml:space" />-->
@@ -179,6 +181,10 @@
  
  <xsl:template match="w:tab">
   <tab />
+ </xsl:template>
+ 
+ <xsl:template match="w:br">
+  <lb />
  </xsl:template>
  
  <xsl:template match="w:tbl">
