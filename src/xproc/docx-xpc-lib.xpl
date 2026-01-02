@@ -118,6 +118,7 @@
  
  <!-- STEP -->
  <p:declare-step type="dxd:get-ooxml-content" version="3.0" name="getting-ooxml-content">
+  <p:option name="root" as="xs:string" values="('document', 'footnotes', 'comments')" select="'document'" />
   <p:option name="content" as="xs:string" values="('document', 'styles', 'footnotes', 'comments', 'hyperlinks')" />
   
   <p:input port="source" primary="true">
@@ -136,7 +137,9 @@
   <p:variable name="debug" select="$debug-path || '' ne ''" />
   <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
-  <p:variable name="include-filter" select="if($content = 'hyperlinks') then 'document\.xml\.rels' else 'word/' || $content || '\.xml'" />
+  <p:variable name="include-filter" select="if($content = 'hyperlinks') then 
+   $root || '\.xml\.rels' (: document.xml.rels or footnotes.xml.rels :)
+    else 'word/' || $content || '\.xml'" />
   
   <p:unarchive include-filter="{$include-filter}" name="content" />
   
@@ -672,6 +675,12 @@
    <p:variable name="comments" select="/" />   
   <!--</p:group>-->
   
+  <dxd:get-ooxml-content content="hyperlinks" root="comments"  debug-path="{$content-debug-path}" base-uri="{$base-uri}">
+   <p:with-input port="source" pipe="source@docx-to-xml" />
+  </dxd:get-ooxml-content>
+  <p:variable name="comments-hyperlinks" select="/" />
+  
+  
   <dxd:get-ooxml-content content="footnotes" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-ooxml-content>
@@ -687,6 +696,11 @@
    <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-ooxml-content>
   <p:variable name="hyperlinks" select="/" />
+  
+  <dxd:get-ooxml-content content="hyperlinks" root="footnotes"  debug-path="{$content-debug-path}" base-uri="{$base-uri}">
+   <p:with-input port="source" pipe="source@docx-to-xml" />
+  </dxd:get-ooxml-content>
+  <p:variable name="footnotes-hyperlinks" select="/" />
   
   <dxd:get-document debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@docx-to-xml" />
@@ -709,7 +723,9 @@
     'root' : 'body', 
     'styles' : $styles,
     'footnotes' : $footnotes,
+    'footnotes-hyperlinks' : $footnotes-hyperlinks,
     'comments' : $comments,
+    'comments-hyperlinks' : $comments-hyperlinks,
     'hyperlinks' : $hyperlinks
     }" />
   </p:xslt>

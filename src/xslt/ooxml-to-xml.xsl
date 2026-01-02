@@ -23,6 +23,8 @@
  <xsl:param name="comments" as="document-node(element(w:comments))" />
  <xsl:param name="footnotes" as="document-node(element(w:footnotes))" />
  <xsl:param name="hyperlinks" as="document-node(element(rel:Relationships))" />
+ <xsl:param name="footnotes-hyperlinks" as="document-node(element(rel:Relationships))" />
+ <xsl:param name="comments-hyperlinks" as="document-node(element(rel:Relationships))" />
  
  <xsl:param name="root-element" select="'body'" />
  <xsl:param name="footnote-element" select="'footnote'" />
@@ -56,6 +58,7 @@
  <xsl:strip-space elements="*"/>
  
  <xsl:mode on-no-match="shallow-skip"/>
+ <xsl:mode on-no-match="shallow-skip" name="footnote-hyperlink"/>
  <xsl:output method="xml" indent="yes" />
  
  <xsl:template match="/">
@@ -215,7 +218,12 @@
  </xsl:template>
  
  <xsl:template match="w:hyperlink">
-  <xsl:variable name="target" select="key('hyperlink', @r:id, $hyperlinks)"/>
+  <xsl:variable name="target" select="if(ancestor::w:footnote) 
+    then key('hyperlink', @r:id, $footnotes-hyperlinks) 
+    else if(ancestor::w:comment) 
+     then key('hyperlink', @r:id, $comments-hyperlinks)
+    else key('hyperlink', @r:id, $hyperlinks)
+    "/>
   <hyperlink target="{$target/@Target}">
    <xsl:if test="@w:tgtFrame">
     <xsl:attribute name="frame" select="@w:tgtFrame" />
