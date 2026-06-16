@@ -191,7 +191,8 @@
   </p:if>
 
  </p:declare-step>
-
+ 
+ 
  <!-- STEP -->
  <p:declare-step type="dxd:replace-document-only" version="3.0" name="replacing-document-only">
   <p:documentation>Replaces document.xml file in OOXML format withing DOCX container.</p:documentation>
@@ -378,9 +379,9 @@
   
   <!-- As a report, output where the new zip is stored: -->
   
-  <p:output port="result-uri" serialization="map{'indent' : true()}" primary="false" pipe="result-uri@storing">
+  <!--<p:output port="result-uri" serialization="map{'indent' : true()}" primary="false" pipe="result-uri@storing">
    <p:documentation>Information about document replacement</p:documentation>
-  </p:output>
+  </p:output>-->
   
   <p:input port="source">
    <p:documentation>Target document, ie. DOCX file which will be changed.</p:documentation>
@@ -390,21 +391,30 @@
    <p:documentation>Source document, ie. document.xml file in OOXML format.</p:documentation>
   </p:input>
   
-  <p:input port="styles">
+  <p:input port="styles" sequence="true">
    <p:documentation>Source document with styles definition, ie. styles.xml file in OOXML format.</p:documentation>
+  </p:input>
+  
+  <p:input port="footnotes" sequence="true">
+   <p:documentation>Source document with footnotes, ie. footnotes.xml file in OOXML format.</p:documentation>
   </p:input>
   
   <!-- OPTIONS -->
   <p:option name="debug-path" as="xs:anyURI?" select="()" />
   <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
   
-  <p:option name="docx-href" as="xs:anyURI"  />
+  <p:option name="target" as="xs:anyURI?" required="false"  />
   
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
   <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
   
-  <p:variable name="docx-href-uri" select="resolve-uri($docx-href, $base-uri)" />
+  <p:variable name="target-uri" select="if(empty($target)) 
+    then () 
+    else resolve-uri($target, $base-uri)" pipe="source@content-replace" />
+  
+  <p:variable name="styles" select="/w:styles" pipe="styles@content-replace" />
+  <p:variable name="footnotes" select="/w:footnotes" pipe="footnotes@content-replace" />
 
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -424,9 +434,14 @@
      <p:with-input port="replacement" pipe="document@content-replace" />
     </p:replace>
    </p:if>
-   <p:if test="ends-with(p:document-property(., 'base-uri'), '/styles.xml')">
+   <p:if test="ends-with(p:document-property(., 'base-uri'), '/styles.xml') and exists($styles)">
     <p:replace match="w:styles" message="Replacing styles in {p:document-property(., 'base-uri')}">
      <p:with-input port="replacement" pipe="styles@content-replace" />
+    </p:replace>
+   </p:if>
+   <p:if test="ends-with(p:document-property(., 'base-uri'), '/footnotes.xml') and exists($footnotes)">
+    <p:replace match="w:footnotes" message="Replacing footnotes in {p:document-property(., 'base-uri')}">
+     <p:with-input port="replacement" pipe="footnotes@content-replace" />
     </p:replace>
    </p:if>
   </p:for-each>
@@ -436,7 +451,14 @@
    <p:with-input port="manifest" pipe="result@manifest" />
   </p:archive>
   
-  <p:store href="{$docx-href-uri}" name="storing" message="Storing {$docx-href} ::: {$docx-href-uri}" />
+  <p:if test="exists($target-uri)" name="storing">
+<!--   <p:output port="result-uri" />-->
+   <p:store href="{$target-uri}" message="Storing {$target} ::: {$target-uri}" />
+   <!--<p:identity>
+    <p:with-input pipe="result-uri" />
+   </p:identity>-->   
+  </p:if>
+  
   
  </p:declare-step>
  
@@ -766,19 +788,36 @@
   <!-- VARIABLES -->
   <p:variable name="debug" select="$debug-path || '' ne ''" />
   <p:variable name="debug-path-uri" select="if($debug) then p:urify($debug-path, $base-uri) else ()" />
+  <p:variable name="source-uri" select="p:document-property(., 'base-uri')" />
   
+  <dxd:get-ooxml-content content="footnotes" debug-path="{$debug-path}" base-uri="{$base-uri}" >
+   <p:with-input port="source" pipe="source@processing-revisions-docx" />
+  </dxd:get-ooxml-content>
+  <p:identity name="footnotes-original" />
+  <dxd:process-revisions-ooxml operation="{$operation}" debug-path="{$debug-path}" base-uri="{$base-uri}" />
+  <p:identity name="footnotes-revisions" />
+  
+  <dxd:get-ooxml-content content="styles" debug-path="{$debug-path}" base-uri="{$base-uri}" >
+   <p:with-input port="source" pipe="source@processing-revisions-docx" />
+  </dxd:get-ooxml-content>
+  <p:identity name="styles-original" />
+  <dxd:process-revisions-ooxml operation="{$operation}" debug-path="{$debug-path}" base-uri="{$base-uri}" />
+  <p:identity name="styles-revisions" />
 
   <dxd:get-ooxml-content content="document" debug-path="{$debug-path}" base-uri="{$base-uri}" >
    <p:with-input port="source" pipe="source@processing-revisions-docx" />
   </dxd:get-ooxml-content>
-  
+  <p:identity name="document-original" />
   <dxd:process-revisions-ooxml operation="{$operation}" debug-path="{$debug-path}" base-uri="{$base-uri}" />
-  <p:identity name="revisions" />
+  <p:identity name="document-revisions" />
   
-  <dxd:replace-document-only debug-path="{$debug-path}" base-uri="{$base-uri}">
+  <dxd:replace-content debug-path="{$debug-path}" base-uri="{$base-uri}" p:message=" ... dxd:replace-content: {$source-uri} ..." >
    <p:with-input port="source" pipe="source@processing-revisions-docx" />
-   <p:with-input port="document" pipe="result@revisions" />
-  </dxd:replace-document-only>
+   <p:with-input port="document" pipe="result@document-revisions" />
+   <p:with-input port="styles" pipe="result@styles-revisions" />
+   <p:with-input port="footnotes" pipe="result@footnotes-revisions" />
+  </dxd:replace-content>
+  
   
  </p:declare-step>
  
