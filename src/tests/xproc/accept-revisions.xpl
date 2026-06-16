@@ -17,6 +17,8 @@
    
 	<!-- INPUT PORTS -->
   <p:input port="source" primary="true" sequence="true">
+  	<p:document href="../input/revisions-in-footnotes.docx" />
+  	<p:document href="../input/revisions-in-styles.docx" />
   	<p:document href="../input/revisions.docx" />
   	<p:document href="../input/revisions.xml" />
   	<p:document href="../input/revisions-essc.xml" />
@@ -38,7 +40,7 @@
 	<p:for-each>
 		<p:variable name="full-path" select="p:document-property(., 'base-uri')" />
 		<p:variable name="name" select="tokenize($full-path, '/')[last()]" />
-		<dxd:process-revisions operation="accept" p:message="Processing {$name}" debug-path="{$debug-path}" base-uri="{$base-uri}"/>
+		<dxd:process-revisions operation="accept" p:message="Processing {$name} ({$full-path})" debug-path="{$debug-path}" base-uri="{$base-uri}"/>
 		<p:store href="../output/{$name}" message="Storing to ../output/{$name}" />
 		<p:identity>
 			<p:with-input pipe="result-uri" />
