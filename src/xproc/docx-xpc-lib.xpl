@@ -118,8 +118,8 @@
  
  <!-- STEP -->
  <p:declare-step type="dxd:get-ooxml-content" version="3.0" name="getting-ooxml-content">
-  <p:option name="root" as="xs:string" values="('document', 'footnotes', 'comments')" select="'document'" />
-  <p:option name="content" as="xs:string" values="('document', 'styles', 'footnotes', 'comments', 'hyperlinks')" />
+  <p:option name="root" as="xs:string" values="('document', 'footnotes', 'endnotes', 'comments')" select="'document'" />
+  <p:option name="content" as="xs:string" values="('document', 'styles', 'footnotes', 'endnotes', 'comments', 'hyperlinks')" />
   
   <p:input port="source" primary="true">
    <p:documentation>Source document, ie. DOCX file.</p:documentation>
@@ -160,6 +160,13 @@
       <p:identity>
        <p:with-input port="source">
         <w:footnotes />
+       </p:with-input>
+      </p:identity>
+     </p:when>
+     <p:when test="$content = 'endnotes'">
+      <p:identity>
+       <p:with-input port="source">
+        <w:endnotes />
        </p:with-input>
       </p:identity>
      </p:when>
@@ -399,6 +406,10 @@
    <p:documentation>Source document with footnotes, ie. footnotes.xml file in OOXML format.</p:documentation>
   </p:input>
   
+  <p:input port="endnotes" sequence="true">
+   <p:documentation>Source document with endnotes, ie. endnotes.xml file in OOXML format.</p:documentation>
+  </p:input>
+  
   <!-- OPTIONS -->
   <p:option name="debug-path" as="xs:anyURI?" select="()" />
   <p:option name="base-uri" as="xs:anyURI?" select="static-base-uri()"/>
@@ -415,6 +426,7 @@
   
   <p:variable name="styles" select="/w:styles" pipe="styles@content-replace" />
   <p:variable name="footnotes" select="/w:footnotes" pipe="footnotes@content-replace" />
+  <p:variable name="endnotes" select="/w:endnotes" pipe="endnotes@content-replace" />
 
   <!-- Get the existing manifest: -->
   <p:archive-manifest name="manifest">
@@ -442,6 +454,11 @@
    <p:if test="ends-with(p:document-property(., 'base-uri'), '/footnotes.xml') and exists($footnotes)">
     <p:replace match="w:footnotes" message="Replacing footnotes in {p:document-property(., 'base-uri')}">
      <p:with-input port="replacement" pipe="footnotes@content-replace" />
+    </p:replace>
+   </p:if>
+   <p:if test="ends-with(p:document-property(., 'base-uri'), '/endnotes.xml') and exists($endnotes)">
+    <p:replace match="w:endnotes" message="Replacing endnotes in {p:document-property(., 'base-uri')}">
+     <p:with-input port="replacement" pipe="endnotes@content-replace" />
     </p:replace>
    </p:if>
   </p:for-each>
@@ -714,6 +731,17 @@
   </p:if>
   <p:variable name="footnotes" select="/" />
   
+  <dxd:get-ooxml-content content="endnotes" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
+   <p:with-input port="source" pipe="source@docx-to-xml" />
+  </dxd:get-ooxml-content>
+  <p:if test="$revisions != ('keep')">
+   <dxd:process-revisions operation="{$revisions}" />
+  </p:if>
+  <p:if test="$clean-markup">
+   <dxd:clean-runs debug-path="{$content-debug-path}/endnotes" base-uri="{$base-uri}" />   
+  </p:if>
+  <p:variable name="endnotes" select="/" />
+  
   <dxd:get-ooxml-content content="hyperlinks" debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-ooxml-content>
@@ -723,6 +751,11 @@
    <p:with-input port="source" pipe="source@docx-to-xml" />
   </dxd:get-ooxml-content>
   <p:variable name="footnotes-hyperlinks" select="/" />
+  
+  <dxd:get-ooxml-content content="hyperlinks" root="endnotes"  debug-path="{$content-debug-path}" base-uri="{$base-uri}">
+   <p:with-input port="source" pipe="source@docx-to-xml" />
+  </dxd:get-ooxml-content>
+  <p:variable name="endnotes-hyperlinks" select="/" />
   
   <dxd:get-document debug-path="{$content-debug-path}" base-uri="{$base-uri}">
    <p:with-input port="source" pipe="source@docx-to-xml" />
@@ -745,7 +778,9 @@
     'root' : 'body', 
     'styles' : $styles,
     'footnotes' : $footnotes,
+    'endnotes' : $endnotes,
     'footnotes-hyperlinks' : $footnotes-hyperlinks,
+    'endnotes-hyperlinks' : $endnotes-hyperlinks,
     'comments' : $comments,
     'comments-hyperlinks' : $comments-hyperlinks,
     'hyperlinks' : $hyperlinks
@@ -797,6 +832,13 @@
   <dxd:process-revisions-ooxml operation="{$operation}" debug-path="{$debug-path}" base-uri="{$base-uri}" />
   <p:identity name="footnotes-revisions" />
   
+  <dxd:get-ooxml-content content="endnotes" debug-path="{$debug-path}" base-uri="{$base-uri}" >
+   <p:with-input port="source" pipe="source@processing-revisions-docx" />
+  </dxd:get-ooxml-content>
+  <p:identity name="endnotes-original" />
+  <dxd:process-revisions-ooxml operation="{$operation}" debug-path="{$debug-path}" base-uri="{$base-uri}" />
+  <p:identity name="endnotes-revisions" />
+  
   <dxd:get-ooxml-content content="styles" debug-path="{$debug-path}" base-uri="{$base-uri}" >
    <p:with-input port="source" pipe="source@processing-revisions-docx" />
   </dxd:get-ooxml-content>
@@ -816,6 +858,7 @@
    <p:with-input port="document" pipe="result@document-revisions" />
    <p:with-input port="styles" pipe="result@styles-revisions" />
    <p:with-input port="footnotes" pipe="result@footnotes-revisions" />
+   <p:with-input port="endnotes" pipe="result@endnotes-revisions" />
   </dxd:replace-content>
   
   

@@ -22,12 +22,15 @@
  <xsl:param name="styles" as="document-node(element(w:styles))" />
  <xsl:param name="comments" as="document-node(element(w:comments))" />
  <xsl:param name="footnotes" as="document-node(element(w:footnotes))" />
+ <xsl:param name="endnotes" as="document-node(element(w:endnotes))" />
  <xsl:param name="hyperlinks" as="document-node(element(rel:Relationships))" />
  <xsl:param name="footnotes-hyperlinks" as="document-node(element(rel:Relationships))" />
+ <xsl:param name="endnotes-hyperlinks" as="document-node(element(rel:Relationships))" />
  <xsl:param name="comments-hyperlinks" as="document-node(element(rel:Relationships))" />
  
  <xsl:param name="root-element" select="'body'" />
  <xsl:param name="footnote-element" select="'footnote'" />
+ <xsl:param name="endnote-element" select="'endnote'" />
  <xsl:param name="comment-element" select="'comment'" />
  
  <xsl:param name="default-paragraph-style" select="'Normální'" />
@@ -53,12 +56,14 @@
  <xsl:key name="style" match="w:style" use="@w:styleId" />
  <xsl:key name="comment" match="w:comment" use="@w:id" />
  <xsl:key name="footnote" match="w:footnote" use="@w:id" />
+ <xsl:key name="endnote" match="w:endnote" use="@w:id" />
  <xsl:key name="hyperlink" match="rel:Relationship" use="@Id" />
  
  <xsl:strip-space elements="*"/>
  
  <xsl:mode on-no-match="shallow-skip"/>
  <xsl:mode on-no-match="shallow-skip" name="footnote-hyperlink"/>
+ <xsl:mode on-no-match="shallow-skip" name="endnote-hyperlink"/>
  <xsl:output method="xml" indent="yes" />
  
  <xsl:template match="/">
@@ -77,9 +82,10 @@
    <xsl:if test="$keep-direct-formatting">
     <xsl:apply-templates select="w:pPr" mode="direct-formatting" />
    </xsl:if>
-   <xsl:apply-templates select="w:r | w:footnoteReference | w:commentRangeStart | w:commentRangeEnd | w:hyperlink" />
+   <xsl:apply-templates select="w:r | w:footnoteReference | w:endnoteReference | w:commentRangeStart | w:commentRangeEnd | w:hyperlink" />
   </xsl:element>
   <xsl:apply-templates select="w:r/w:footnoteReference" mode="footnotes" />
+  <xsl:apply-templates select="w:r/w:endnoteReference" mode="endnotes" />
   <xsl:apply-templates select="w:commentRangeEnd" mode="comments" />
  </xsl:template>
  
@@ -90,7 +96,7 @@
    <xsl:if test="$keep-direct-formatting">
     <xsl:apply-templates select="w:rPr" mode="direct-formatting" />
    </xsl:if>
-   <xsl:apply-templates select="w:t | w:tab | w:br | w:footnoteReference | w:commentRangeStart | w:commentRangeEnd" />
+   <xsl:apply-templates select="w:t | w:tab | w:br | w:footnoteReference | w:endnoteReference | w:commentRangeStart | w:commentRangeEnd" />
   </xsl:element>
  </xsl:template>
  
@@ -159,6 +165,29 @@
   </xsl:element>
  </xsl:template>
  
+ <xsl:template match="w:endnoteReference">
+  <xsl:variable name="number">
+   <xsl:number level="any" />
+  </xsl:variable>
+  <xsl:element name="{local-name()}">
+   <xsl:attribute name="id" select="@w:id" />
+   <xsl:value-of select="$number"/>
+  </xsl:element>
+ </xsl:template>
+ 
+ <xsl:template match="w:endnoteReference" mode="endnotes">
+  <xsl:variable name="number">
+   <xsl:number level="any" />
+  </xsl:variable>
+  
+  <xsl:variable name="endnote" select="key('endnote', @w:id, $endnotes)"/>
+  <xsl:element name="{$endnote-element}">
+   <xsl:attribute name="id" select="@w:id" />
+   <xsl:attribute name="n" select="$number" />
+   <xsl:apply-templates select="$endnote" />
+  </xsl:element>
+ </xsl:template>
+ 
  <xsl:template match="w:commentRangeEnd">
   <xsl:element name="comment-range">
    <xsl:attribute name="type" select="'end'" />
@@ -220,6 +249,8 @@
  <xsl:template match="w:hyperlink">
   <xsl:variable name="target" select="if(ancestor::w:footnote) 
     then key('hyperlink', @r:id, $footnotes-hyperlinks) 
+    else if(ancestor::w:endnote) 
+    then key('hyperlink', @r:id, $endnotes-hyperlinks)
     else if(ancestor::w:comment) 
      then key('hyperlink', @r:id, $comments-hyperlinks)
     else key('hyperlink', @r:id, $hyperlinks)
