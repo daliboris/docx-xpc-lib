@@ -11,6 +11,8 @@
  <xsl:strip-space elements="*" />
  <xsl:output method="xml" indent="yes" />
  <xsl:mode on-no-match="shallow-copy" />
+ <xsl:mode on-no-match="shallow-skip" name="deleted-comment-end" />
+ 
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -31,6 +33,7 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:delInstrText" />
+
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -58,6 +61,7 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:moveToRangeStart | w:moveFromRangeStart | w:moveToRangeEnd | w:moveFromRangeEnd" />
+
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -66,6 +70,7 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:moveFrom" />
+
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -76,6 +81,7 @@
  <xsl:template match="w:moveTo">
   <xsl:apply-templates />
  </xsl:template>
+
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -94,6 +100,7 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:rPrChange" />
+
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -109,6 +116,7 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:pPrChange" />
+
  <xd:doc>
   <xd:desc>
    <xd:p><xd:a href="https://c-rex.net/samples/ooxml/e1/Part4/OOXML_P4_DOCX_Inline_topic_ID0EW2IV.html?hl=w%3Adel">See</xd:a> amd <xd:a href="https://c-rex.net/samples/ooxml/e1/Part3/OOXML_P3_Primer_Revisions_topic_ID0E3PCK.html?hl=w%3Ains">w:ins</xd:a></xd:p>
@@ -143,10 +151,42 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:del | w:delText" />
+ 
+ <xd:doc>
+  <xd:desc>
+   <xd:p>Deleted comments should stay after accepting revisions.</xd:p>
+   <w:del w:id="2" w:author="Boris Lehečka" w:date="2026-07-02T22:22:00Z">
+    <w:r w:rsidR="000874C7" w:rsidRPr="00360440" w:rsidDel="00D73FCE">
+     <w:delText xml:space="preserve"> </w:delText>
+    </w:r>
+    <w:commentRangeEnd w:id="1" />
+    <w:r w:rsidR="000874C7" w:rsidRPr="00360440" w:rsidDel="00D73FCE">
+     <w:rPr>
+      <w:rStyle w:val="Odkaznakoment" />
+     </w:rPr>
+     <w:commentReference w:id="1" />
+    </w:r>
+   </w:del>
+  </xd:desc>
+ </xd:doc>
+ <xsl:template match="w:del[w:commentRangeEnd[let $id := ./@w:id return following-sibling::*[1][self::w:r[w:commentReference/@w:id = $id]]]]" 
+  priority="2">
+  <xsl:apply-templates mode="deleted-comment-end" />
+ </xsl:template>
+ 
+ <xd:doc>
+  <xd:desc>
+   <xd:p>If deletion contains start and the end of the comment, comment should be deleted.</xd:p>
+  </xd:desc>
+ </xd:doc>
+ <xsl:template match="w:del[let $id := w:commentRangeStart/@w:id return w:commentRangeEnd[@w:id = $id]]" priority="3" />
+ 
  <xsl:template match="w:rPr[w:del]" />
+ 
  <xsl:template match="w:ins">
   <xsl:apply-templates />
  </xsl:template>
+ 
  <xd:doc>
   <xd:desc>
    <xd:p>
@@ -186,9 +226,10 @@
    <xsl:apply-templates />
   </xsl:copy>
  </xsl:template>
+ 
  <xd:doc>
   <xd:desc>
-   <xd:p>Completely removed paragraph, i.e. paragraph sing and text (runs).</xd:p>
+   <xd:p>Completely removed paragraph, i.e. paragraph sign and text (runs).</xd:p>
    <w:p>
     <w:pPr>
      <w:rPr>
@@ -210,6 +251,7 @@
   </xd:desc>
  </xd:doc>
  <xsl:template match="w:p[w:pPr[w:rPr[w:del]]][not(w:r)][not(w:ins)]" priority="2" />
+
  <xd:doc>
   <xd:desc>
    <xd:p>Merged paragraph with the following one.</xd:p>
@@ -245,7 +287,9 @@
    <xsl:apply-templates select="following-sibling::w:p[w:r or w:ins][1]/(* except w:pPr)" />
   </xsl:copy>
  </xsl:template>
+ 
  <xsl:template match="w:p[preceding-sibling::*[self::w:p[w:pPr[w:rPr[w:del]]][w:r or w:ins]]][1]" />
+ 
  <xsl:template match="w:p[not(w:pPr[w:rPr[w:del]])]"  priority="2">
   <xsl:variable name="previous" select="
     preceding-sibling::w:p
@@ -283,5 +327,27 @@
    </xsl:otherwise>
   </xsl:choose>
  </xsl:template>
+ 
  <xsl:template match="w:r[w:delTex]" />
+ 
+ <xd:doc>
+  <xd:desc>
+   <xd:p>Deleted comments should stay after accepting revisions.</xd:p>
+  </xd:desc>
+ </xd:doc>
+ <xsl:template match="w:commentRangeEnd[let $id := ./@w:id return following-sibling::*[1][self::w:r[w:commentReference/@w:id = $id]]]" mode="deleted-comment-end">
+  <xsl:copy-of select="." />
+ </xsl:template>
+ 
+ <xd:doc>
+  <xd:desc>
+   <xd:p>Deleted comments should stay after accepting revisions.</xd:p>
+  </xd:desc>
+ </xd:doc>
+ <xsl:template match="w:r[w:commentReference][let $id := w:commentReference/@w:id return preceding-sibling::*[1][self::w:commentRangeEnd/@w:id = $id]]" mode="deleted-comment-end">
+  <xsl:copy-of select="." />
+ </xsl:template>
+
 </xsl:stylesheet>
+
+
