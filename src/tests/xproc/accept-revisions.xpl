@@ -22,13 +22,14 @@
   	<p:document href="../input/revisions.docx" />
   	<p:document href="../input/revisions.xml" />
   	<p:document href="../input/revisions-essc.xml" />
+   <p:document href="../input/revisions-with-comments.docx" />
   </p:input>
    
 	<!-- OUTPUT PORTS -->
 	<p:output port="result" primary="true" sequence="true" />
 	
 	<!-- OPTIONS -->
-	<p:option name="debug-path" select="'../_debug'" as="xs:string?" />
+	<p:option name="debug-path" select="'../_debug/accept-revisions'" as="xs:string?" />
 	<p:option name="base-uri" as="xs:anyURI" select="static-base-uri()"/>
 	
 	<!-- VARIABLES -->
