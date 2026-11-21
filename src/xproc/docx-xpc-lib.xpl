@@ -679,7 +679,7 @@
 
   <p:variable name="file-stem" select="tokenize(tokenize(resolve-uri(base-uri(/), $base-uri), '/')[last()], '\.')[position() lt last()] => string-join('.')" />
   
-  <p:variable name="content-debug-path" select="if($debug) then p:urify($debug-path, $base-uri) else () || '/' || $file-stem || '/docx-to-xml/content'" />
+  <p:variable name="content-debug-path" select="if($debug) then p:urify($debug-path, $base-uri) || '/' || $file-stem || '/docx-to-xml/content' else ()" />
   <p:variable name="content-debug-path-uri" select="if(empty($content-debug-path)) then () else p:urify($content-debug-path, $base-uri)" />
   
   <!-- PIPELINE BODY -->
@@ -709,7 +709,7 @@
    <p:with-input port="source" pipe="source@docx-to-xml" />
    </dxd:get-ooxml-content>
    <p:if test="$clean-markup">
-    <dxd:clean-runs debug-path="{$content-debug-path}/comments" base-uri="{$base-uri}" />   
+    <dxd:clean-runs debug-path="{if($debug) then $content-debug-path || '/comments' else ()}" base-uri="{$base-uri}" />   
    </p:if>
    <p:variable name="comments" select="/" />   
   <!--</p:group>-->
@@ -727,7 +727,7 @@
    <dxd:process-revisions operation="{$revisions}" />
   </p:if>
   <p:if test="$clean-markup">
-   <dxd:clean-runs debug-path="{$content-debug-path}/footnotes" base-uri="{$base-uri}" />   
+   <dxd:clean-runs debug-path="{if($debug) then $content-debug-path || '/footnotes' else ()}" base-uri="{$base-uri}" />   
   </p:if>
   <p:variable name="footnotes" select="/" />
   
@@ -738,7 +738,7 @@
    <dxd:process-revisions operation="{$revisions}" />
   </p:if>
   <p:if test="$clean-markup">
-   <dxd:clean-runs debug-path="{$content-debug-path}/endnotes" base-uri="{$base-uri}" />   
+   <dxd:clean-runs debug-path="{if($debug) then $content-debug-path || '/endnotes' else ()}" base-uri="{$base-uri}" />   
   </p:if>
   <p:variable name="endnotes" select="/" />
   
@@ -764,7 +764,7 @@
    <dxd:process-revisions operation="{$revisions}" />
   </p:if>
   <p:if test="$clean-markup">
-   <dxd:clean-runs debug-path="{$content-debug-path}/document" base-uri="{$base-uri}" />   
+   <dxd:clean-runs debug-path="{if($debug) then $content-debug-path || '/document' else ()}" base-uri="{$base-uri}" />   
   </p:if>
   
   <p:if test="$debug">
